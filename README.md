@@ -29,10 +29,10 @@ La méthode s’appuie sur la pile logicielle suivante :
    - `pages`
    - `chapitres`
    - `pdf`
-- `make clean` : nettoyer les fichiers temporaires.
 - `make pages` : générer les pages (introduction, résumé, etc.) de `src/pages/` vers `tmp/`. Requis pour fabriquer le PDF.
 - `make chapitres` générer les chapitres (le corps du texte) de `src/chapitres/` vers `tmp/memoire.tex`. Requis pour fabriquer le PDF.
-- `make pdf` : générer le PDF final dans le dossier `export/`. Les étpes `pages` et `chapitres` doivent avoir été lancés.
+- `make pdf` : générer le PDF final dans le dossier `export/`. Les étapes `pages` et `chapitres` doivent avoir été lancés au préalable.
+- `make clean` : nettoyer les fichiers temporaires.
 
 Exemple d’utilisation en ligne de commande :
 
