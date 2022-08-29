@@ -4,24 +4,35 @@ Pour construire un mémoire à l’Université de Montréal en Arts et sciences.
 
 À partir du modèle fourni par la faculté ([disponible sur cette page](https://bib.umontreal.ca/gerer-diffuser/communication-savante/rediger-these-memoire/)) (voir le `README` original plus bas).
 
-[Guide de présentation des mémoires et des thèses](https://esp.umontreal.ca/fileadmin/esp/documents/Cheminement/GuidePresentationMemoiresTheses.pdf)
+Voir aussi : [Guide de présentation des mémoires et des thèses (PDF)](https://esp.umontreal.ca/fileadmin/esp/documents/Cheminement/GuidePresentationMemoiresTheses.pdf)
 
 ## Prérequis
+
+La méthode s’appuie sur la pile logicielle suivante :
 
 - [Pandoc](https://pandoc.org/)
 - [LaTeX](https://www.latex-project.org/)
 - [Make](https://fr.wikipedia.org/wiki/Make) (pour lancer les commandes)
 
+## Installation
+
+1. Cloner ce répertoire et
+2. Éditer les fichiers dans le dossier `src/`.
+   2.1. `src/reglages.md` : paratexte formel/légal (titre, auteur, date, jury, abbréviations, etc.)
+   2.2. `src/pages/` : pages à gérer séparément (Résumé, Introduction, etc.)
+   2.3. `src/chapitres` : ce qui compose le corps du mémoire, les chapitres. Tout en-tête de niveau 1 dénote un chapitre.
+3. Ouvrir un terminal, se déplacer dans le dossier de travail, et lancer les commandes disponibles (voir plus bas).
+
 ## Commandes disponibles
 
-- `make clean` : nettoyer fichiers temporaires
+- `make all`, `make tout` ou `make` : alias qui fait tout sauf le nettoyage. Ce sera généralement la seule commande utilisée. Elle fait les tâches suivantes :
+   - `pages`
+   - `chapitres`
+   - `pdf`
+- `make clean` : nettoyer les fichiers temporaires.
 - `make pages` : générer les pages (introduction, résumé, etc.) de `src/pages/` vers `tmp/`. Requis pour fabriquer le PDF.
 - `make chapitres` générer les chapitres (le corps du texte) de `src/chapitres/` vers `tmp/memoire.tex`. Requis pour fabriquer le PDF.
 - `make pdf` : générer le PDF final dans le dossier `export/`. Les étpes `pages` et `chapitres` doivent avoir été lancés.
-- `make all`, `make tout` ou `make` : alias qui fait tout sauf le nettoyage :
-  - `pages`
-  - `chapitres`
-  - `pdf`
 
 Exemple d’utilisation en ligne de commande :
 
