@@ -16,7 +16,7 @@ La méthode s’appuie sur la pile logicielle suivante :
 
 ## Installation
 
-1. Cloner ce répertoire et
+1. Cloner ce répertoire (`git clone https://git.loupbrun.ca/louis/gabarit-memoire-udem.git`) ou par [téléchargement ZIP](http://git.loupbrun.ca/louis/gabarit-memoire-udem/archive/main.zip).
 2. Éditer les fichiers dans le dossier `src/`.
    2.1. `src/reglages.md` : paratexte formel/légal (titre, auteur, date, jury, abbréviations, etc.)
    2.2. `src/pages/` : pages à gérer séparément (Résumé, Introduction, etc.)
