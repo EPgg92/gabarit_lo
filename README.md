@@ -1,6 +1,6 @@
-# gabarit-latex-udem
+# gabarit-memoire-udem
 
-Pour construire un mémoire à l’Université de Montréal en arts et sciences.
+Pour construire un mémoire à l’Université de Montréal en Arts et sciences.
 
 À partir du modèle fourni par la faculté ([disponible sur cette page](https://bib.umontreal.ca/gerer-diffuser/communication-savante/rediger-these-memoire/)) (voir le `README` original plus bas).
 
@@ -8,9 +8,9 @@ Pour construire un mémoire à l’Université de Montréal en arts et sciences.
 
 ## Prérequis
 
-- [`pandoc`](https://pandoc.org/)
-- LaTeX
-- Make (pour lancer les commandes)
+- [Pandoc](https://pandoc.org/)
+- [LaTeX](https://www.latex-project.org/)
+- [Make](https://fr.wikipedia.org/wiki/Make) (pour lancer les commandes)
 
 ## Commandes disponibles
 
