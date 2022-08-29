@@ -14,11 +14,14 @@ Pour construire un mémoire à l’Université de Montréal en Arts et sciences.
 
 ## Commandes disponibles
 
-- `make clean`
-- `make pages`
-- `make chapitres`
-- `make pdf`
-- `make all`, `make tout` ou `make`
+- `make clean` : nettoyer fichiers temporaires
+- `make pages` : générer les pages (introduction, résumé, etc.) de `src/pages/` vers `tmp/`. Requis pour fabriquer le PDF.
+- `make chapitres` générer les chapitres (le corps du texte) de `src/chapitres/` vers `tmp/memoire.tex`. Requis pour fabriquer le PDF.
+- `make pdf` : générer le PDF final dans le dossier `export/`. Les étpes `pages` et `chapitres` doivent avoir été lancés.
+- `make all`, `make tout` ou `make` : alias qui fait tout sauf le nettoyage :
+  - `pages`
+  - `chapitres`
+  - `pdf`
 
 Exemple d’utilisation en ligne de commande :
 
