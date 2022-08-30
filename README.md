@@ -6,9 +6,16 @@ Pour construire un mémoire à l’Université de Montréal en Arts et sciences.
 
 Voir aussi : [Guide de présentation des mémoires et des thèses (PDF)](https://esp.umontreal.ca/fileadmin/esp/documents/Cheminement/GuidePresentationMemoiresTheses.pdf)
 
+## Pourquoi ce projet?
+
+Rédiger en Markdown tout en utilisant le gabarit officiel pour produire un PDF impeccable.
+Le modèle fourni par la faculté est un excellent point de départ, mais il suppose que le contenu sera inséré à même le fichier `.tex`.
+Le format `.tex` est excellent pour la composition (mise en page), beaucoup moins pour la rédaction.
+Grâce à [Pandoc](https://pandoc.org/) et en adaptant le fichier gabarit, le processus de rédaction est simple et demeure séparé de la mise en forme, laquelle est automatisée (plus fiable et moins chronophage pour l’utilisateur·trice).
+
 ## Prérequis
 
-La méthode s’appuie sur la pile logicielle suivante :
+La stratégie s’appuie sur la pile logicielle suivante :
 
 - [Pandoc](https://pandoc.org/)
 - [LaTeX](https://www.latex-project.org/)
@@ -16,7 +23,7 @@ La méthode s’appuie sur la pile logicielle suivante :
 
 ## Installation
 
-1. Cloner ce répertoire (`git clone https://git.loupbrun.ca/louis/gabarit-memoire-udem.git`) ou par [téléchargement ZIP](http://git.loupbrun.ca/louis/gabarit-memoire-udem/archive/main.zip).
+1. Cloner ce répertoire (`git clone https://git.loupbrun.ca/louis/gabarit-memoire-udem.git`) ou par [téléchargement ZIP](http://git.loupbrun.ca/louis/gabarit-memoire-udem/archive/main.zip), dépaqueter et y entrer.
 2. Éditer les fichiers dans le dossier `src/` :
    - 2.1. `src/reglages.md` : paratexte formel ou légal (titre, auteur, date, jury, abbréviations, etc.)
    - 2.2. `src/pages/` : pages à gérer séparément (Résumé, Introduction, etc.)
