@@ -53,7 +53,7 @@ source commandes.sh
 Exemple d’utilisation en ligne de commande :
 
 ```shell
-make tout
+tout
 ```
 
 ---

@@ -15,12 +15,13 @@ echo " clean       Nettoyer les fichiers temporaires dans tmp/"
 echo ""
 echo "Date: $DATE"
 
-clean:
+function clean() {
 	echo ""
 	echo "================="
 	echo "  ...Nettoyage..."
 	echo "================="
 	rm tmp/*
+}
 
 function resume() {
 	echo ""
