@@ -1,12 +1,12 @@
 %% Pour voir les accents de ce fichier, assurez-vous que votre
 %% éditeur de texte lise le fichier en utf-8!
 
-%% La classe <dms> est construite au-dessus de <amsbook>, donc
+%% La classe <littfra> est construite au-dessus de <amsbook>, donc
 %% <amsmath>, <amsfonts> et <amsthm> sont automatiquement chargés.
 %% Pour un mémoire
-\documentclass[11pt,twoside,maitrise]{dms}
+\documentclass[11pt,twoside,maitrise]{littfra}
 %% Pour une thèse
-%%\documentclass[12pt,twoside,phd]{dms}
+%%\documentclass[12pt,twoside,phd]{littfra}
 
 \usepackage[utf8]{inputenc} %Obligatoires
 \usepackage[T1]{fontenc}    %
@@ -28,7 +28,7 @@
 \usepackage{lmodern}
 
 %% Il n'est pas nécessaire d'utiliser <babel>, car
-%% les commandes intégrées par la classe <dms>
+%% les commandes intégrées par la classe <littfra>
 %% \francais et \anglais font le travail. Néanmoins,
 %% certains autres packages nécessitent <babel> (comme
 %% <natbib>), donc simplement enlever les % devant <babel>
@@ -89,6 +89,9 @@
 \usepackage{bookmark} % Remédie à des petits problème
                       % de <hyperref> (important qu'il
                       % apparaisse APRÈS <hyperref>)
+\usepackage{epigraph} % Pour produire de belles citations en exergue
+\setlength\epigraphrule{0pt} % Masquer la ligne verticale entre citation et auteur
+\setlength\epigraphwidth{.42\textwidth} % Largeur sur mesure
 
   % Enlever les commentaires du prochaine \hypersetup et
   % le remplir avec l'information pertinente.
@@ -120,15 +123,15 @@
 %% alors \begin{theo} va faire un Théorème et si \anglais
 %% est utilisé, \begin{theo} fera un Theorem.)
 %%
-\newtheorem{cor}{\corollaryname}[section]
-\newtheorem{deff}[cor]{\definitionname}
-\newtheorem{ex}[cor]{\examplename}
-\newtheorem{lem}[cor]{\lemmaname}
-\newtheorem{prop}[cor]{Proposition}
-\newtheorem{rem}[cor]{\remarkname}
-\newtheorem{theo}[cor]{\theoremname}
-\theoremstyle{definition}
-\newtheorem{algo}[cor]{\algoname}
+%\newtheorem{cor}{\corollaryname}[section]
+%\newtheorem{deff}[cor]{\definitionname}
+%\newtheorem{ex}[cor]{\examplename}
+%\newtheorem{lem}[cor]{\lemmaname}
+%\newtheorem{prop}[cor]{Proposition}
+%\newtheorem{rem}[cor]{\remarkname}
+%\newtheorem{theo}[cor]{\theoremname}
+%\theoremstyle{definition}
+%\newtheorem{algo}[cor]{\algoname}
 %% NOTE : Il peut être commode de redéfinir \the<type> pour
 %% obtenir la numérotation désirée. Par exemple, pour
 %% que les corollaires soit numérotés #section.#sous-section.#sous-sous-section.#paragraphe.#corollaire,
@@ -185,11 +188,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-% Pandoc ajout la balise `tightlist` aux listes, il faut la définir
-% voir https://tex.stackexchange.com/questions/257418/error-tightlist-converting-md-file-into-pdf-using-pandoc
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-
 %%
 %% Voici des options pour annoter les différentes versions de votre
 %% mémoire. La commande \brouillon imprime, au bas de chacune des pages, la
@@ -229,7 +227,7 @@ $if(date)$
 \date{$date$} %Date du DÉPÔT INITIAL (ou du 2e dépôt s'il y a corrections majeures)
 $else$
 % Si omission de la date, utilisons simplement celle d’aujourd’hui
-\date{\todayfr} % la commande `\todayfr` est définie dans le fichier dms.cls
+\date{\todayfr} % la commande `\todayfr` est définie dans le fichier littfra.cls
 $endif$
 
 $if(discipline)$
@@ -436,6 +434,8 @@ $endif$
 %%------------------------------------------------- %
 %%                pages 1                           %
 %%------------------------------------------------- %
+
+%\epigraph{\itshape Begin at the beginning, the King said gravely, ``and go on till you come to the end: then stop.''}{---Lewis Carroll, \textit{Alice in Wonderland}}
 
 $body$
 

@@ -1,5 +1,6 @@
 %%
-%% This is file `dms.cls',
+%% This is file `littfra.cls' by Louis-Olivier Brassard <louis-olivier.brassard@umontreal.ca>,
+%% derived from `cms.cls` which was
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
@@ -36,7 +37,7 @@
 %%%  ====================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{dms}[2019/07/18 2.2]
+\ProvidesClass{littfra}[2022/08/30 2.3]
 \newif\iftagsleft@
 \newif\ifphd@
 \newif\ifmaitrise@
@@ -75,8 +76,8 @@
 \edef\partnamefr{Partie}
 \edef\partnameen{Part}
 
-\edef\dmschapternamefr{Chapitre}
-\edef\dmschapternameen{Chapter}
+\edef\littfrachapternamefr{Chapitre}
+\edef\littfrachapternameen{Chapter}
 
 \edef\appendixnamefr{Annexe}
 \edef\appendixnameen{Appendix}
@@ -84,14 +85,14 @@
 \edef\bibnamefr{Bibliographie}
 \edef\bibnameen{Bibliography}
 
-\edef\dms@etfr{ et}
-\edef\dms@eten{, and}
+\edef\littfra@etfr{ et}
+\edef\littfra@eten{, and}
 
-\edef\dmslistfigurenamefr{Liste des figures}
-\edef\dmslistfigurenameen{List of figures}
+\edef\littfralistfigurenamefr{Liste des figures}
+\edef\littfralistfigurenameen{List of figures}
 
-\edef\dmslisttablenamefr{Liste des tableaux}
-\edef\dmslisttablenameen{List of tables}
+\edef\littfralisttablenamefr{Liste des tableaux}
+\edef\littfralisttablenameen{List of tables}
 
 \edef\lemmanamefr{Lemme}
 \edef\lemmanameen{Lemma}
@@ -108,8 +109,8 @@
 \edef\tablenamefr{Tableau}
 \edef\tablenameen{Table}
 
-\edef\dmscontentsnamefr{Table des mati\noexpand\`eres} %\'e car on ne sait pas si inputenc sera chargé
-\edef\dmscontentsnameen{Contents}
+\edef\littfracontentsnamefr{Table des mati\noexpand\`eres} %\'e car on ne sait pas si inputenc sera chargé
+\edef\littfracontentsnameen{Contents}
 
 \edef\revuemsgfr{Cet article a \noexpand\'et\noexpand\'e soumis dans }
 \edef\revuemsgen{This article was submitted in }
@@ -119,11 +120,11 @@
 \edef\contribmsgen{The main contributions of
   \noexpand\authors\ for this articles are presented.}
 
-\edef\dms@articlenamefr{article}
-\edef\dms@articlenameen{Article}
+\edef\littfra@articlenamefr{article}
+\edef\littfra@articlenameen{Article}
 
-\edef\dms@parnamefr{par}
-\edef\dms@parnameen{by}
+\edef\littfra@parnamefr{par}
+\edef\littfra@parnameen{by}
 
 \AtBeginDocument{
   \edef\refnamefr{R\'ef\'erences bibliographiques}
@@ -140,8 +141,8 @@
   \edef\keywordsfr{Mots cl\'es}
   \edef\keywordsen{Keywords}
 
-  \edef\dmscontentsnamefr{Table des mati\`eres} %\'e car on ne sait pas si inputenc sera chargé
-  \edef\dmscontentsnameen{Contents}
+  \edef\littfracontentsnamefr{Table des mati\`eres} %\'e car on ne sait pas si inputenc sera chargé
+  \edef\littfracontentsnameen{Contents}
 
   \edef\abstractnamefr{R\'esum\'e}
   \edef\abstractnameen{Abstract}
@@ -181,11 +182,11 @@
     Tenth\or Eleventh\or Twelfth\or Thirteenth\or Fourteenth\fi}
 
 \newcount\escapecount
-\def\dopolyglot{\do\partname \do\dmschaptername \do\appendixname \do\bibname \do\refname%
-  \do\dms@et \do\keywords \do\dmscontentsname \do\dmslistfigurename \do\dmslisttablename%
+\def\dopolyglot{\do\partname \do\littfrachaptername \do\appendixname \do\bibname \do\refname%
+  \do\littfra@et \do\keywords \do\littfracontentsname \do\littfralistfigurename \do\littfralisttablename%
   \do\theoremname \do\algoname \do\definitionname \do\lemmaname \do\abstractname%
   \do\problemname \do\corollaryname \do\examplename \do\remarkname \do\proofname%
-  \do\revuemsg \do\contribmsg \do\dms@articlename \do\dms@parname \do\tablename}
+  \do\revuemsg \do\contribmsg \do\littfra@articlename \do\littfra@parname \do\tablename}
 
 
  % On vérifie que le francais est installé
@@ -193,14 +194,14 @@
 \ifx\undefined\l@french %On vérifie LaTeX
   \ifx\undefined\lang@french % On vérifie XeLaTeX
     \errmsg{Le francais n'est pas installé!}\errhelp{Assurez-vous que les packages pour le francais soient installés.}
-    \def\dms@apostrophelccode=0
+    \def\littfra@apostrophelccode=0
     \def\l@language{0} % On utilise l'anglais vu que le français n'est pas installé...
   \else
     \let\l@french=\lang@french
-    \def\dms@apostrophelccode{39} % On prépare le "lower case code" de l'apostrophe
+    \def\littfra@apostrophelccode{39} % On prépare le "lower case code" de l'apostrophe
   \fi
 \else
-  \def\dms@apostrophelccode{39}
+  \def\littfra@apostrophelccode{39}
 \fi
 
 \def\@francais{%
@@ -211,7 +212,7 @@
     \def\bibname{R\'ef\'erences bibliographiques}
     \escapechar=\escapecount
     \language\l@french
-    \lccode`'=\dms@apostrophelccode
+    \lccode`'=\littfra@apostrophelccode
     \lefthyphenmin=2
     \righthyphenmin=3
     \let\parttocentry\parttocentryfr%
@@ -260,13 +261,13 @@
 \global\entetedynamiquefalse
 \def\entetedynamique{
     \entetedynamiquetrue
-    \polyglotlet\chaptername=\dmschaptername
+    \polyglotlet\chaptername=\littfrachaptername
     \addtopolyglot\chaptername
-    \polyglotlet\contentsname=\dmscontentsname
+    \polyglotlet\contentsname=\littfracontentsname
     \addtopolyglot\contentsname
-    \polyglotlet\listtablename=\dmslisttablename
+    \polyglotlet\listtablename=\littfralisttablename
     \addtopolyglot\listtablename
-    \polyglotlet\listfigurename=\dmslistfigurename
+    \polyglotlet\listfigurename=\littfralistfigurename
     \addtopolyglot\listfigurename
 }
   % On s'attend que #1 soit de la forme
@@ -570,7 +571,7 @@
         \vfill
         \centerline{\rm par}\vskip20pt%
         \ifx\@empty\authors
-            \dms@erreur\author %on rappelle de définir \author
+            \littfra@erreur\author %on rappelle de définir \author
         \else %ici, \authors est non vide
             \vtop{\centering
                 {\bf\Large\authors}\@@par
@@ -599,7 +600,7 @@
             \@degree\\
             en\strut\
             \ifx\@empty\@sujet
-            \dms@erreur\sujet
+            \littfra@erreur\sujet
             \else
             \@sujet
             \fi
@@ -638,7 +639,7 @@
         \vtop{
             \raggedcenter\bf\large
             \ifx\@empty\@title
-                \dms@erreur\title
+                \littfra@erreur\title
             \fi
             \expandafter\upshape\expandafter{\@title}\@@par
             %
@@ -659,7 +660,7 @@
         \ifphd@\centerline{pr\'esent\'ee par}\fi
         \vskip18\p@\@plus6\p@
         \ifx\@empty\authors
-            \dms@erreur\author
+            \littfra@erreur\author
         \else
             \vtop{
                 \centering
@@ -679,9 +680,9 @@
             \def\lignemembre##1\titre##2{\vtop{\centering
                 \escapecount=\escapechar
                 \escapechar=-1
-                \expandafter\def\expandafter\dms@temp\expandafter{\string##1}
+                \expandafter\def\expandafter\littfra@temp\expandafter{\string##1}
                 \escapechar=\escapecount
-                \setbox0=\hbox{\csname\dms@temp\endcsname}
+                \setbox0=\hbox{\csname\littfra@temp\endcsname}
                 \unhcopy0\strut\par\vskip-3pt
                 \noindent\vrule height 0.4pt depth 0pt width%
                 \ifdim\wd0>11pc \the\wd0\else 11pc\fi
@@ -850,20 +851,22 @@
     \def\ArgI{#1}                   %gardé en mémoire pour plus tard
     \newdimen\temp \temp=\baselineskip
     \renewcommand{\baselinestretch}{1}   %simple interligne
-    \normalsize
+    \normalsize\smaller
     \advance\temp by -\baselineskip\par\vskip\temp
+    \vspace{1em} % espace avant bloc
     \leftskip3\parindent\rightskip2\parindent
-    \it\noindent\ignorespaces\guillemetouvrant}
-  {\penalty10000\guillemetfermant\par
+    \noindent\ignorespaces}
+  {\penalty10000\par
     \ifx\ArgI\Rel@x\else       %s'il est faux que #1=\relax
       \noindent\null\hfill$\sim$ \ArgI\par\fi
+      \vspace{1em} % espace après bloc
       \egroup}
 \newenvironment{quote*}[1][\relax]
   {\bgroup
     \def\ArgI{#1}                   %gardé en mémoire pour plus tard
     \newdimen\temp \temp=\baselineskip
     \renewcommand{\baselinestretch}{1}   %simple interligne
-    \normalsize
+    \normalsize\smaller
     \advance\temp by -\baselineskip\par\vskip\temp
     \leftskip3\parindent\rightskip2\parindent
     \rm\noindent\ignorespaces\guillemetouvrant}
@@ -1024,17 +1027,17 @@
 }
 
 \def\article@plus@pagetitre{
-     \dms@defmaketitle %Def de \maketitle
-    \def\dms@defmaketitle{ %La prochaine fois, on ne redéfinit pas \maketitle
+     \littfra@defmaketitle %Def de \maketitle
+    \def\littfra@defmaketitle{ %La prochaine fois, on ne redéfinit pas \maketitle
         \def\article@titre{}
         \def\@dedicace{}
         \def\@auteurs{}
         \def\@adresses{\debut@adresses}
-        \gdef\dms@adressenum{1}
-        \def\auteur####1{\let\@et\dms@et\def\@auteurs{####1\dms@adressenote}%
+        \gdef\littfra@adressenum{1}
+        \def\auteur####1{\let\@et\littfra@et\def\@auteurs{####1\littfra@adressenote}%
             \def\auteur########1{\expandafter\def\expandafter\@auteurs\expandafter{%
             \expandafter\begingroup\expandafter\let\expandafter\@et\expandafter,\@auteurs\endgroup%
-            \@et\ ########1\dms@adressenote}}}
+            \@et\ ########1\littfra@adressenote}}}
         \let\author=\auteur
     }
     \cleardoublepage
@@ -1051,7 +1054,7 @@
     \global\@topnum=\z@
     \@afterindentfalse
     \def\@toclevel{0}
-    \secdef\dms@article\dms@sarticle
+    \secdef\littfra@article\littfra@sarticle
 } % FIN DE \def\article
 %%%%
 %%%
@@ -1062,11 +1065,11 @@
     \def\finarticle{  %fin article est appelé au début de chaque chapitre
         \def\thesection{\thechapter.\arabic{section}}
         \let\finarticle\relax%
-        \c@chapter\dms@c@chapter
-        \let\dms@c@chapter\undefined
+        \c@chapter\littfra@c@chapter
+        \let\littfra@c@chapter\undefined
     }
-    \ifx\dms@c@chapter\undefined
-        \edef\dms@c@chapter{\the\c@chapter}
+    \ifx\littfra@c@chapter\undefined
+        \edef\littfra@c@chapter{\the\c@chapter}
     \fi
     \c@chapter=255
     \advance\c@chapter by -\the\c@part
@@ -1078,7 +1081,7 @@
     \def\thesection{\arabic{section}}
 } % fin de la def de \preparticle
 
-\def\dms@article[#1]#2{
+\def\littfra@article[#1]#2{
     \titre{#2}
     \def\temp{#1}
     \ifx\temp\empty
@@ -1086,24 +1089,24 @@
             \let\@secnumber\thechapter
             \@tocwriteb\tocchapter{chapter}{#2} %Écrit chapitre dans la toc
         \else
-            \addcontentsline{toc}{chapter}{\articletocentry\ \dms@articlename. #2} %Écrit article dans la toc
+            \addcontentsline{toc}{chapter}{\articletocentry\ \littfra@articlename. #2} %Écrit article dans la toc
         \fi
     \else
         \ifarticleenchapitre
             \let\@secnumber\thechapter
             \@tocwriteb\tocchapter{chapter}{#1} %Écrit chapitre dans la toc
         \else
-            \addcontentsline{toc}{chapter}{\articletocentry\ \dms@articlename. #1}
+            \addcontentsline{toc}{chapter}{\articletocentry\ \littfra@articlename. #1}
         \fi
     \fi
-    \dms@makearticlehead{#2}
+    \littfra@makearticlehead{#2}
 }
 
-\def\dms@sarticle#1{
+\def\littfra@sarticle#1{
     \titre{#1}
-    \addcontentsline{toc}{chapter}{\articletocentry\ \dms@articlename. #1}
+    \addcontentsline{toc}{chapter}{\articletocentry\ \littfra@articlename. #1}
    % \@tocwriteb\tocpart{part}{#1}
-    \dms@makearticlehead{#1}
+    \littfra@makearticlehead{#1}
 }
 
 
@@ -1130,7 +1133,7 @@
 }
 \let\contribution=\contributions %(Ce n'est pas la quantité, mais la qualité qui compte)
 
-\def\dms@makearticlehead#1% le titre=#1
+\def\littfra@makearticlehead#1% le titre=#1
 {
     \global\topskip 5pc\relax
         % Bloc pour écrire i-ème article et le titre
@@ -1139,7 +1142,7 @@
         \ifarticleenchapitre
             \vbox{\LARGE\noindent\chaptername\ \the\c@chapter\strut} %en tête en chapitre
         \else
-          \do\dms@parname   \vbox{\LARGE\noindent\articletocentry\ \dms@articlename.\strut} %i-eme article
+          \do\littfra@parname   \vbox{\LARGE\noindent\articletocentry\ \littfra@articlename.\strut} %i-eme article
         \fi
         \par\vfil
         \fontsize{30pt}{25pt}\selectfont
@@ -1148,7 +1151,7 @@
         \fontsize{17.28pt}{19pt}\mdseries\rmfamily\upshape\selectfont
         \vbox{\centering\authors\par} %auteur de la thèse
         \par\vfil
-        \ifx\@empty\@revue\dms@erreur\revue\else
+        \ifx\@empty\@revue\littfra@erreur\revue\else
             \vbox{\centering
                 \ifx\@revueop\empty \revuemsg \revuemsg
                 \else\@revueop\fi\@revue\par}
@@ -1170,8 +1173,8 @@
 \let\makearticlechapter\articleenchapitre
 
 \ifpagetitreart@\else
-\def\dms@defmakesmalltitle{
-    \dms@prepmaketitle
+\def\littfra@defmakesmalltitle{
+    \littfra@prepmaketitle
     \def\makesmalltitle{
         \@topnum\z@ % this prevents figures from falling at the top of page 1
         \global\topskip 5pc\relax
@@ -1181,7 +1184,7 @@
             \ifarticleenchapitre
                 \vbox{\LARGE\noindent\chaptername\ \the\c@chapter\strut} %en tête en chapitre
             \else
-                \vbox{\LARGE\noindent\articletocentry\ \dms@articlename.\strut} %i-eme article
+                \vbox{\LARGE\noindent\articletocentry\ \littfra@articlename.\strut} %i-eme article
             \fi
         \egroup
         \hrule width0pt height32pt depth0pt
@@ -1199,11 +1202,11 @@
                     \aftergroup\centering
                 \fi
             \endgroup
-            \dms@parname\par\vskip9mm
+            \littfra@parname\par\vskip9mm
             \restorebaselineskip
-            \gdef\dms@adressenum{1}
+            \gdef\littfra@adressenum{1}
             \@auteurs
-            \gdef\dms@adressenum{1}
+            \gdef\littfra@adressenum{1}
         }
         \vskip1.5em
         \vbox{        % Tableau d'adresses
@@ -1221,7 +1224,7 @@
             \else\@revueop
           \fi%
              \ifx\@revue\empty%        % Si \@revue est vide,
-                 \dms@erreur\revue%   % «\revue» sera inscrit
+                 \littfra@erreur\revue%   % «\revue» sera inscrit
              \else%                    % pour rappeler de le remplir
                  \@revue%
              \fi.
@@ -1232,22 +1235,22 @@
         %
     } %Fin de la def de \makesmalltitle
     \let\maketitle=\makesmalltitle
-} %Fin de la def de \dms@defmakesmalltitle
+} %Fin de la def de \littfra@defmakesmalltitle
 \fi %fin du \ifpagetitreart@
 
 
 \def\article@moins@pagetitre{
-     \dms@defmakesmalltitle %Def de \makesmalltitle
-    \def\dms@defmakesmalltitle{ %La prochaine fois, on ne redéfinit pas \makesmalltitle
+     \littfra@defmakesmalltitle %Def de \makesmalltitle
+    \def\littfra@defmakesmalltitle{ %La prochaine fois, on ne redéfinit pas \makesmalltitle
         \def\article@titre{}
         \def\@dedicace{}
         \def\@auteurs{}
         \def\@adresses{\debut@adresses}
-        \gdef\dms@adressenum{1}
-        \def\auteur####1{\let\@et\dms@et\def\@auteurs{####1\dms@adressenote}%
+        \gdef\littfra@adressenum{1}
+        \def\auteur####1{\let\@et\littfra@et\def\@auteurs{####1\littfra@adressenote}%
             \def\auteur########1{\expandafter\def\expandafter\@auteurs\expandafter{%
             \expandafter\begingroup\expandafter\let\expandafter\@et\expandafter,\@auteurs\endgroup%
-            \@et\ ########1\dms@adressenote}}}
+            \@et\ ########1\littfra@adressenote}}}
         \let\author=\auteur
     }
     \cleardoublepage
@@ -1264,39 +1267,39 @@
     \global\@topnum=\z@
     \@afterindentfalse
     \def\@toclevel{0}
-    \def\dms@makearticlehead##1{\relax}
-    \secdef\dms@article\dms@sarticle
+    \def\littfra@makearticlehead##1{\relax}
+    \secdef\littfra@article\littfra@sarticle
 } % FIN DE \def\article
 
-\def\dms@prepmaketitle{
+\def\littfra@prepmaketitle{
        %Paramètres simples
     \def\titre##1{\gdef\article@titre{##1}}
     \let\title\titre
     \def\@dedicace{}
     \def\dedicace##1{\gdef\@dedicace{##1}}
     \def\@auteurs{}
-    \gdef\dms@adressenum{1} % Utiliser pour le num de la note
-    \def\dms@adressenote{$^\dms@adressenum$} % Racourci pour mettre une note
+    \gdef\littfra@adressenum{1} % Utiliser pour le num de la note
+    \def\littfra@adressenote{$^\littfra@adressenum$} % Racourci pour mettre une note
     \def\@adresses{\debut@adresses}
         % Paramètres complexes
-    \def\auteur##1{\let\@et\dms@et\def\@auteurs{##1\dms@adressenote}%
+    \def\auteur##1{\let\@et\littfra@et\def\@auteurs{##1\littfra@adressenote}%
         \def\auteur####1{\expandafter\def\expandafter\@auteurs\expandafter{%
         \expandafter\begingroup\expandafter\let\expandafter\@et\expandafter,\@auteurs\endgroup%
-        \@et\ ####1\dms@adressenote}}}
+        \@et\ ####1\littfra@adressenote}}}
     \let\author\auteur
     %
-    \def\dms@adresseincrement{\count255=\dms@adressenum%
+    \def\littfra@adresseincrement{\count255=\littfra@adressenum%
         \advance\count255 by 1%
-        \global\edef\dms@adressenum{\the\count255}%
+        \global\edef\littfra@adressenum{\the\count255}%
     }
     \def\debut@adresses{%
         \halign to\textwidth\bgroup%
             \hbox to 1cm{\hfil{####}\hfil} & \hbox{\vtop{\noindent ####}}\cr%
     }
     \def\adresse##1{\expandafter\def\expandafter\@auteurs\expandafter{%
-        \@auteurs\dms@adresseincrement}
+        \@auteurs\littfra@adresseincrement}
         \expandafter\def\expandafter\@adresses\expandafter{\@adresses%
-        (\dms@adressenote\dms@adresseincrement) & ##1\cr\noalign{\vskip5pt}}}
+        (\littfra@adressenote\littfra@adresseincrement) & ##1\cr\noalign{\vskip5pt}}}
     \let\address\adresse
     %
         % Environnements de résumés
@@ -1319,12 +1322,12 @@
     \newenvironment{resume}[1]
         {\def\@arg{##1}\begin{resume*}}
         {\par\nobreak\noindent{\bfseries\keywords~:} \@arg\end{resume*}}
-} %Fin de la def de \dms@prepmaketitle
+} %Fin de la def de \littfra@prepmaketitle
 
-\def\dms@defmaketitle{
+\def\littfra@defmaketitle{
         %%
         % Def de MAKETITLE
-    \dms@prepmaketitle
+    \littfra@prepmaketitle
     \def\maketitle{
         \@topnum\z@ % this prevents figures from falling at the top of page 1
         \hrule width0pt height32pt depth0pt
@@ -1345,9 +1348,9 @@
             \endgroup
             par\par\vskip9mm
             \restorebaselineskip
-            \gdef\dms@adressenum{1}
+            \gdef\littfra@adressenum{1}
             \@auteurs
-            \gdef\dms@adressenum{1}
+            \gdef\littfra@adressenum{1}
         }
         \vskip1.5em
         \vbox{        % Tableau d'adresses
@@ -1365,7 +1368,7 @@
             \else\@revueop
           \fi%
              \ifx\@revue\empty%        % Si \@revue est vide,
-                 \dms@erreur\revue   % «\revue» sera inscrit
+                 \littfra@erreur\revue   % «\revue» sera inscrit
              \else%                    % pour rappeler de le remplir
                  \@revue%
              \fi.
@@ -1405,30 +1408,44 @@
         {3}
         \normalparindent
         {6\p@\@plus2\p@}
-        {-1mm}
-        {\normalfont}%
+        {2pt}
+        % Intertitre 1.2.3.4 en gras
+        {\bfseries}%
 }
 \def\paragraph{%
     \@startsection{paragraph}
+        {4}
         \z@
         \z@
-        {13}
         {-\fontdimen2\font}
         {\normalfont\global\advance\c@paragraph by 1}%
 }
 
 \def\subparagraph{%
     \@startsection{subparagraph}
+        {5}
         \z@
         \z@
-        {13}
+        {-\fontdimen2\font}
+        \normalfont%
+}
+\def\paragraph{%
+    \@startsection{paragraph}
+        {1}
+        \z@
+        {10pt}
         {-\fontdimen2\font}
         \normalfont%
 }
 
+% Pandoc ajout la balise `tightlist` aux listes, il faut la définir
+% voir https://tex.stackexchange.com/questions/257418/error-tightlist-converting-md-file-into-pdf-using-pandoc
+\providecommand{\tightlist}{%
+    \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
 \def\appendix{\par
     \c@chapter\z@ \c@section\z@
-    \polyglotlet\dmschaptername\appendixname
+    \polyglotlet\littfrachaptername\appendixname
     \polyglotlet\chaptername\appendixname
     \def\thechapter{\@Alph\c@chapter}
     \AppendixPageNumber}
@@ -1469,7 +1486,7 @@
   \else \let\@secnumber\thechapter \fi
   \typeout{\chaptername\space\@secnumber}%
   \def\@toclevel{0}%
-  \ifx\dmschaptername\appendixname
+  \ifx\littfrachaptername\appendixname
       \@tocwriteb\tocappendix{chapter}{#2}%
   \else
       \ifx\next\empty
@@ -1485,7 +1502,7 @@
 \def\@schapter#1{\typeout{#1}%
   \let\@secnumber\@empty
   \def\@toclevel{0}%
-  \ifx\dmschaptername\appendixname \@tocwriteb\tocappendix{chapter}{#1}%
+  \ifx\littfrachaptername\appendixname \@tocwriteb\tocappendix{chapter}{#1}%
   \else \@tocwriteb\tocchapter{chapter}{#1}\fi
   \chaptermark{#1}%
   \addtocontents{lof}{\protect\addvspace{10\p@}}%
@@ -1547,15 +1564,15 @@
             \selectlanguage{english}%
         }
     \fi
-    \ifx\dmschaptername\dmschapternameen % \anglais est utilisé
+    \ifx\littfrachaptername\littfrachapternameen % \anglais est utilisé
       \@anglais
     \else
       \@francais%
     \fi
-    \edef\chaptername{\ifx\dmschaptername\undefined Chapitre\else\dmschaptername\fi}
-    \edef\contentsname{\ifx\dmscontentsname\undefined Table des mati\noexpand\`ere\else\dmscontentsname\fi}
-    \edef\listfigurename{\ifx\dmslistfigurename\undefined Table des figures\else\dmslistfigurename\fi}
-    \edef\listtablename{\ifx\dmslisttablename\undefined Table des tableaux\else\dmslisttablename\fi}
+    \edef\chaptername{\ifx\littfrachaptername\undefined Chapitre\else\littfrachaptername\fi}
+    \edef\contentsname{\ifx\littfracontentsname\undefined Table des mati\noexpand\`ere\else\littfracontentsname\fi}
+    \edef\listfigurename{\ifx\littfralistfigurename\undefined Table des figures\else\littfralistfigurename\fi}
+    \edef\listtablename{\ifx\littfralisttablename\undefined Table des tableaux\else\littfralisttablename\fi}
     \ifentetedynamique
       \entetedynamique
     \fi
@@ -1609,7 +1626,7 @@
 %%
 %%
 
-\expandafter\def\expandafter\include\expandafter#\expandafter1\expandafter{\expandafter\edef\expandafter\dms@inputfilename%
+\expandafter\def\expandafter\include\expandafter#\expandafter1\expandafter{\expandafter\edef\expandafter\littfra@inputfilename%
 \expandafter{\expandafter#\expandafter1\expandafter}%
 \include{#1}}
 
@@ -1621,7 +1638,7 @@
     \begingroup
         \let\chapter=\section %Pour que ça marche avec natbib aussi
         \def\@bibtitlestyle{\section*{\protect\refname}}
-        \edef\jobname{\dms@inputfilename}
+        \edef\jobname{\littfra@inputfilename}
         \bibliography{#1}
      \endgroup%
 }
@@ -1631,7 +1648,7 @@
     \begingroup
         \let\section=\chapter  %Pour que ça marche avec natbib aussi
         \def\@bibtitlestyle{\chapter*{\protect\refname}}
-        \edef\jobname{\dms@inputfilename}
+        \edef\jobname{\littfra@inputfilename}
         \bibliography{#1}
      \endgroup%
 }
@@ -1756,12 +1773,12 @@
     \thm@preskip\topsep \divide\thm@preskip\tw@
     \thm@postskip\thm@preskip
 }
-\def\dms@erreur#1{\errhelp{Assurez de remplir tous les champs obligatoires d'une page titre,
+\def\littfra@erreur#1{\errhelp{Assurez de remplir tous les champs obligatoires d'une page titre,
   dont \auteur, \titre, \sujet et, dans le cas d'un article, \revue. Si vous désirez en laisser un
   vide, vous pouvez faire p.ex. \revue{\relax}.}
-     \errmessage{DMS : Vous devez remplir le champ \string#1 avant d'appeler \string\maketitle}}
+     \errmessage{LittFra : Vous devez remplir le champ \string#1 avant d'appeler \string\maketitle}}
 
 
 \endinput
 %%
-%% End of file `dms.cls'.
+%% End of file `littfra.cls'.

@@ -3,7 +3,7 @@
 # variables
 DOSSIER_FINAL := $(shell date +'%Y-%m-%d-%kh%M')
 
-tout: pages chapitres pdf
+tout: pages chapitres pdf # il faut faire pdf 2x pour produire TDM
 all: tout # simple alias
 
 pages: resume abstract introduction remerciements
