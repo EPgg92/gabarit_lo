@@ -115,6 +115,12 @@ function pdf() {
 	echo ""
 }
 
+function tout() {
+  pages;
+  chapitres;
+  pdf;
+}
+
 # Les commandes exécutées par ce fichier
 #pages;
 #chapitres;
