@@ -1410,18 +1410,18 @@
 }
 \def\paragraph{%
     \@startsection{paragraph}
-        {4}
         \z@
         \z@
+        {13}
         {-\fontdimen2\font}
         {\normalfont\global\advance\c@paragraph by 1}%
 }
 
 \def\subparagraph{%
     \@startsection{subparagraph}
-        {5}
         \z@
         \z@
+        {13}
         {-\fontdimen2\font}
         \normalfont%
 }

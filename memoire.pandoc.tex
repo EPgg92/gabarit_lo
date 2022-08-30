@@ -185,6 +185,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
+% Pandoc ajout la balise `tightlist` aux listes, il faut la définir
+% voir https://tex.stackexchange.com/questions/257418/error-tightlist-converting-md-file-into-pdf-using-pandoc
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
 %%
 %% Voici des options pour annoter les différentes versions de votre
 %% mémoire. La commande \brouillon imprime, au bas de chacune des pages, la
@@ -287,6 +292,17 @@ $endif$
 %% page titre.
 
 \maketitle
+
+
+% Réglages macro-typo pour le corps
+% ---------------------------------
+% 1. Aucune indentation
+%\setlength{\parindent}{0pt}
+% 2.Espacement entre les paragraphes (car pas d’indentation)
+%   Set \parskip to put 12pt (+2/-1 pt) between paragraphs
+%\setlength{\parskip}{13pt plus 2pt minus 1pt}
+% Fin des réglages macro-typo
+
 
  % Pour générer la deuxième page titre, il faut appeler à nouveau \maketitle
  % Cette page est obligatoire.
