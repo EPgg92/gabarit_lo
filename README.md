@@ -20,7 +20,7 @@ La stratégie s’appuie sur la pile logicielle suivante :
 
 - [Pandoc](https://pandoc.org/)
 - [LaTeX](https://www.latex-project.org/)
-- [Make](https://fr.wikipedia.org/wiki/Make) (pour lancer les commandes)
+- Un terminal avec un shell style [`bash`](https://www.gnu.org/software/bash/) ou [`zsh`](https://www.zsh.org/) (pour exécuter les commandes)
 
 ## Installation
 
@@ -33,22 +33,27 @@ La stratégie s’appuie sur la pile logicielle suivante :
 
 ## Commandes disponibles
 
-- `make all`, `make tout` ou `make` : alias qui fait tout sauf le nettoyage. Ce sera généralement la seule commande utilisée. Elle fait les tâches suivantes :
+Au préalable, enregistrer les commandes (ceci devra être fait à chaque session de terminal) :
+
+```shell
+source commandes.sh
+```
+
+À présent, les commandes ci-dessous seront disponibles :
+
+- `tout` : commande unique qui fait tout sauf le nettoyage. Ce sera généralement la seule commande utilisée. Elle fait les tâches suivantes :
    - `pages`
    - `chapitres`
    - `pdf`
-- `make pages` : générer les pages (introduction, résumé, etc.) de `src/pages/` vers `tmp/`. Requis pour fabriquer le PDF.
-- `make chapitres` générer les chapitres (le corps du texte) de `src/chapitres/` vers `tmp/memoire.tex`. Requis pour fabriquer le PDF.
-- `make pdf` : générer le PDF final dans le dossier `export/`. Les étapes `pages` et `chapitres` doivent avoir été lancées au préalable.
-- `make clean` : nettoyer les fichiers temporaires.
+- `pages` : générer les pages (introduction, résumé, etc.) de `src/pages/` vers `tmp/`. Requis pour fabriquer le PDF.
+- `chapitres` générer les chapitres (le corps du texte) de `src/chapitres/` vers `tmp/memoire.tex`. Requis pour fabriquer le PDF.
+- `pdf` : générer le PDF final dans le dossier `export/`. Les étapes `pages` et `chapitres` doivent avoir été lancées au préalable.
+- `clean` : nettoyer les fichiers temporaires.
 
 Exemple d’utilisation en ligne de commande :
 
 ```shell
 make tout
-
-# ... ou juste `make` tout court
-make
 ```
 
 ---
