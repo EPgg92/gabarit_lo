@@ -6,6 +6,8 @@ TMP_DIR=tmp
 DATE=$(date +'%Y-%m-%d-%Hh%M')
 DOSSIER_FINAL="export/$DATE"
 
+CITEPROC_OPTIONS="--bibliography=$BIBLIOGRAPHY_FILE --csl=$CSL_FILE"
+
 echo ""
 echo "Enregistrement des fonctions suivantes :"
 echo ""
@@ -42,7 +44,10 @@ function abstract() {
 	echo "📄 Page « Abstract » ..."
 	echo "========================"
 
-  pandoc $PAGES_DIR/abstract.md -o $TMP_DIR/abstract.md.tex
+  pandoc $PAGES_DIR/abstract.md \
+  --citeproc \
+  $CITEPROC_OPTIONS \
+  -o $TMP_DIR/abstract.md.tex
 
 	echo "Fait!"
 }
@@ -53,7 +58,10 @@ function introduction() {
 	echo "📄 Page « Introduction » ..."
 	echo "============================"
 
-  pandoc $PAGES_DIR/introduction.md -o $TMP_DIR/introduction.md.tex
+  pandoc $PAGES_DIR/introduction.md \
+  --citeproc \
+  $CITEPROC_OPTIONS \
+  -o $TMP_DIR/introduction.md.tex
 
 	echo "Fait!"
 }
@@ -64,13 +72,19 @@ function conclusion() {
 	echo "📄 Page « Conclusion » ..."
 	echo "==========================="
 
-  pandoc $PAGES_DIR/conclusion.md -o $TMP_DIR/conclusion.md.tex
+  pandoc $PAGES_DIR/conclusion.md \
+  --citeproc \
+  $CITEPROC_OPTIONS \
+  -o $TMP_DIR/conclusion.md.tex
 
 	echo "Fait!"
 }
 
 function remerciements() {
-  pandoc $PAGES_DIR/remerciements.md -o $TMP_DIR/remerciements.md.tex
+  pandoc $PAGES_DIR/remerciements.md \
+  --citeproc \
+  $CITEPROC_OPTIONS \
+  -o $TMP_DIR/remerciements.md.tex
 }
 
 function pages() {
@@ -97,13 +111,14 @@ function chapitres() {
 
   pandoc \
   	--top-level-division=chapter \
-  	--template=memoire.pandoc.tex \
-  	src/reglages.md \
     --citeproc \
-    --bibliography=$BIBLIOGRAPHY_FILE \
-    --csl=$CSL_FILE \
+    $CITEPROC_OPTIONS \
   	$CHAPITRES_DIR/*.md \
+<<<<<<< HEAD
   	-o $TMP_DIR/memoire.tex
+=======
+  	-o $TMP_DIR/chapitres.tex
+>>>>>>> 3df3625 (fonctionne avec pandoc... mais problèmes d’encodage)
 
   	echo "Fait!"
 }
@@ -111,11 +126,16 @@ function chapitres() {
 function tex() {
 	echo ""
 	echo "======================================"
-	echo "🛠 Fichier TeX..."
+	echo "🛠 Fichier TeX + biblio..."
 	echo "======================================"
 
   pandoc \
-    $TMP_DIR/memoire.tmp.tex \
+  	--standalone \
+  	--template=memoire.pandoc.tex \
+    -f markdown \
+    -t latex \
+  	src/reglages.md \
+    $TMP_DIR/chapitres.tex \
     -o $TMP_DIR/memoire.tex
 
   	echo "Fait!"
@@ -124,12 +144,12 @@ function tex() {
 function pdf() {
 	echo ""
 	echo "================================================"
-	echo "📕 En train de produire le pdf avec pdflatex ..."
+	echo "📕 En train de produire le pdf avec xelatex ..."
 	echo "================================================"
 
   mkdir -p $DOSSIER_FINAL
 
-  pdflatex \
+  xelatex \
   -halt-on-error \
   -output-directory $DOSSIER_FINAL \
   $TMP_DIR/memoire.tex \
@@ -148,7 +168,7 @@ function pdf() {
 function tout() {
   pages;
   chapitres;
-  #tex;
+  tex;
   pdf;
   pdf; # PDF 2x pour Table des matières (et autres)
 }
