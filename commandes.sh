@@ -99,8 +99,11 @@ function chapitres() {
   	--top-level-division=chapter \
   	--template=memoire.pandoc.tex \
   	src/reglages.md \
+    --citeproc \
+    --bibliography=$BIBLIOGRAPHY_FILE \
+    --csl=$CSL_FILE \
   	$CHAPITRES_DIR/*.md \
-  	-o $TMP_DIR/memoire.tmp.tex
+  	-o $TMP_DIR/memoire.tex
 
   	echo "Fait!"
 }
@@ -112,9 +115,6 @@ function tex() {
 	echo "======================================"
 
   pandoc \
-    --citeproc \
-    --bibliography=$BIBLIOGRAPHY_FILE \
-    --csl=$CSL_FILE \
     $TMP_DIR/memoire.tmp.tex \
     -o $TMP_DIR/memoire.tex
 
@@ -148,7 +148,7 @@ function pdf() {
 function tout() {
   pages;
   chapitres;
-  tex;
+  #tex;
   pdf;
   pdf; # PDF 2x pour Table des matières (et autres)
 }
