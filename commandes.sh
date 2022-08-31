@@ -140,12 +140,12 @@ function tex() {
 function pdf() {
 	echo ""
 	echo "================================================"
-	echo "📕 En train de produire le pdf avec xelatex ..."
+	echo "📕 En train de produire le pdf avec pdflatex ..."
 	echo "================================================"
 
   mkdir -p $DOSSIER_FINAL
 
-  xelatex \
+  pdflatex \
   -halt-on-error \
   -output-directory $DOSSIER_FINAL \
   $TMP_DIR/memoire.tex \
