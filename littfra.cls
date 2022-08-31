@@ -456,7 +456,8 @@
 \let\@faculty=\@facultyto
 
 \def\department#1{\def\@department{{\normalfont\rm#1}}}
-\def\@department{ D\'epartement de math\'ematiques et de statistique}
+% TODO rendre cette option configurable
+\def\@department{ D\'epartement des litt\'eratures de langue française}
 
 \def\date#1{\def\@date{{\normalfont\rm#1}}}
 \def\@date{}
@@ -1522,9 +1523,9 @@
         \vbox{\hrule width \hsize height .1mm}%
         \vskip 9pt
         #1 \par %\uppercase{#1} \par  %Laisser ou non \uppercase? Choix à faire
-        \vskip 42pt \par
+        \vskip 32pt \par % originellement 42
     \endgroup
-    \skip@=36\p@%
+    \skip@=36\p@% % originellement 36
     \advance\skip@ by -\normalbaselineskip
     \vskip\skip@%
 }
@@ -1536,10 +1537,10 @@
         \leftline{#1} %\uppercase{#1}}%  % Laisser ou non \uppercase? Choix à faire
         \vskip0pt
         \vbox{\hrule width \hsize}
-        \vskip42pt
+        \vskip12pt % originellement 42
         \par
     \endgroup
-    \skip@=36pt
+    \skip@=36pt % originellement 36
     \advance\skip@-\normalbaselineskip
     \vskip\skip@
 }
