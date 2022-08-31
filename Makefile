@@ -2,6 +2,8 @@
 
 # variables
 DOSSIER_FINAL := $(shell date +'%Y-%m-%d-%kh%M')
+BIBLIOGRAPHY_FILE=src/bib.json
+CSL_FILE=transversalites.csl
 
 tout: pages chapitres pdf # il faut faire pdf 2x pour produire TDM
 all: tout # simple alias
@@ -20,32 +22,56 @@ resume:
 	@echo "======================"
 	@echo "📄 Page « Résumé » ..."
 	@echo "======================"
-	pandoc src/pages/resume.md -o tmp/resume.md.tex
+	pandoc \
+	--citeproc \
+	--bibliography=${BIBLIOGRAPHY_FILE} \
+	--csl=${CSL_FILE} \
+	src/pages/resume.md \
+	-o tmp/resume.md.tex
 
 abstract:
 	@echo ""
 	@echo "========================"
 	@echo "📄 Page « Abstract » ..."
 	@echo "========================"
-	pandoc src/pages/abstract.md -o tmp/abstract.md.tex
+	pandoc \
+	--citeproc \
+	--bibliography=${BIBLIOGRAPHY_FILE} \
+	--csl=${CSL_FILE} \
+	src/pages/abstract.md \
+	-o tmp/abstract.md.tex
 introduction:
 	@echo ""
 	@echo "============================"
 	@echo "📄 Page « Introduction » ..."
 	@echo "============================"
-	pandoc src/pages/introduction.md -o tmp/introduction.md.tex
+	pandoc \
+	--citeproc \
+	--bibliography=${BIBLIOGRAPHY_FILE} \
+	--csl=${CSL_FILE} \
+	src/pages/introduction.md \
+	-o tmp/introduction.md.tex
 conclusion:
 	@echo ""
 	@echo "==========================="
 	@echo "📄 Page « Conclusion » ..."
 	@echo "==========================="
-	pandoc src/pages/conclusion.md -o tmp/conclusion.md.tex
+	pandoc \
+	--citeproc \
+	--bibliography=${BIBLIOGRAPHY_FILE} \
+	--csl=${CSL_FILE} \
+	src/pages/conclusion.md \
+	-o tmp/conclusion.md.tex
 remerciements:
 	@echo ""
 	@echo "============================="
 	@echo "📄 Page « Remerciements » ..."
 	@echo "============================="
-	pandoc src/pages/remerciements.md -o tmp/remerciements.md.tex
+	pandoc \
+	--citeproc \
+	--bibliography=${BIBLIOGRAPHY_FILE} \
+	src/pages/remerciements.md \
+	-o tmp/remerciements.md.tex
 
 chapitres:
 	@echo ""
