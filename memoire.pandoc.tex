@@ -428,9 +428,11 @@ $endif$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \IfFileExists{./tmp/introduction.md.tex}{%
+  \setcounter{secnumdepth}{-1}
   \chapter*{Introduction}
 
   \input{./tmp/introduction.md.tex}
+  \setcounter{secnumdepth}{1}
 }{} % end file exists
 
 %%------------------------------------------------- %
@@ -442,9 +444,12 @@ $endif$
 $body$
 
 \IfFileExists{./tmp/conclusion.md.tex}{%
+  \setcounter{secnumdepth}{-1}
   \chapter*{Conclusion}
 
   \input{./tmp/conclusion.md.tex}
+  % On peut vouloir la numérotation à partir d’ici, ou non. Décommenter pour en avoir.
+  %\setcounter{secnumdepth}{-1}
 }{} % end file exists
 %%--------------%
 %%     index    %
