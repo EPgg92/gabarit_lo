@@ -3,7 +3,6 @@ CHAPITRES_DIR=src/chapitres
 BIBLIOGRAPHY_FILE=src/bib.json
 CSL_FILE=transversalites.csl
 TMP_DIR=tmp
-<<<<<<< HEAD
 DATE=$(date +'%Y-%m-%d-%Hh%M')
 DOSSIER_FINAL="export/$DATE"
 
