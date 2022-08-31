@@ -115,7 +115,7 @@ function tex() {
     --citeproc \
     --bibliography=$BIBLIOGRAPHY_FILE \
     --csl=$CSL_FILE \
-    $TMP_DIR/memoire.tmp.tex
+    $TMP_DIR/memoire.tmp.tex \
     -o $TMP_DIR/memoire.tex
 
   	echo "Fait!"
