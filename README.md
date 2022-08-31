@@ -56,6 +56,21 @@ Exemple d’utilisation en ligne de commande :
 tout
 ```
 
+## Rédaction
+
+Quelques trucs pour la rédaction.
+
+### Épigraphe
+
+Il est possible d’utiliser la commnade `epigraph` de LaTeX.
+
+```latex
+\begin{singlespace}
+\epigraph{\itshape J’ai beau prendre la plus éclatante de mes voix, les hommes ne veulent point l’entendre}
+{\sc--- Madeleine-Angélique de Gomez}
+\end{singlespace}
+```
+
 ---
 
 ## README original
