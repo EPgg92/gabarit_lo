@@ -1,7 +1,10 @@
 PAGES_DIR=src/pages
 CHAPITRES_DIR=src/chapitres
+BIBLIOGRAPHY_FILE=src/bib.json
+CSL_FILE=transversalites.csl
 TMP_DIR=tmp
-DATE=$(date +'%Y-%m-%d-%kh%M')
+<<<<<<< HEAD
+DATE=$(date +'%Y-%m-%d-%Hh%M')
 DOSSIER_FINAL="export/$DATE"
 
 echo ""
@@ -98,7 +101,23 @@ function chapitres() {
   	--template=memoire.pandoc.tex \
   	src/reglages.md \
   	$CHAPITRES_DIR/*.md \
-  	-o $TMP_DIR/memoire.tex
+  	-o $TMP_DIR/memoire.tmp.tex
+
+  	echo "Fait!"
+}
+
+function tex() {
+	echo ""
+	echo "======================================"
+	echo "🛠 Fichier TeX..."
+	echo "======================================"
+
+  pandoc \
+    --citeproc \
+    --bibliography=$BIBLIOGRAPHY_FILE \
+    --csl=$CSL_FILE \
+    $TMP_DIR/memoire.tmp.tex
+    -o $TMP_DIR/memoire.tex
 
   	echo "Fait!"
 }
@@ -130,7 +149,9 @@ function pdf() {
 function tout() {
   pages;
   chapitres;
+  tex;
   pdf;
+  pdf; # PDF 2x pour Table des matières (et autres)
 }
 
 # Les commandes exécutées par ce fichier
@@ -138,3 +159,7 @@ function tout() {
 #chapitres;
 #pdf;
 # c’est tout!
+
+# Allows to call a function based on arguments passed to the script
+# Example: `./build.sh pdf`
+$*
