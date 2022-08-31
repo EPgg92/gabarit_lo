@@ -172,12 +172,43 @@
 
 %%\makeindex
 
+% Bibliographie
+% Pour usage avec pandoc
+%\newlength{\cslhangindent}
+%\setlength{\cslhangindent}{1.5em}
+%\newlength{\csllabelwidth}
+%\setlength{\csllabelwidth}{3em}
+%\newlength{\cslentryspacingunit} % times entry-spacing
+%\setlength{\cslentryspacingunit}{\parskip}
+%\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+%{% don't indent paragraphs
+%  \setlength{\parindent}{0pt}
+%  % turn on hanging indent if param 1 is 1
+%  \ifodd #1
+%  \let\oldpar\par
+%  \def\par{\hangindent=\cslhangindent\oldpar}
+%  \fi
+%  % set entry spacing
+%  \setlength{\parskip}{#2\cslentryspacingunit}
+%  }%
+%  {}
+%\usepackage{calc}
+%\newcommand{\CSLBlock}[1]{#1\hfill\break}
+%\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+%\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+%\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+%
+%$if(bibliography)$
+%\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+%$endif$
+
 %% Il est obligatoire d'écrire à double interligne
 %% ou à interligne et demi. On peut soit utiliser
 %% le package <setspace> ou \baselinestretch.
 %% Le package est un peu plus propre, mais le choix
 %% reste à la discrétion de l'usager.
 \usepackage[doublespacing]{setspace}
+\usepackage{biblatex}
  % ou
 %%\renewcommand{\baselinestretch}{1.5}
 
@@ -432,7 +463,7 @@ $endif$
   \chapter*{Introduction}
 
   \input{./tmp/introduction.md.tex}
-  \setcounter{secnumdepth}{1}
+  \setcounter{secnumdepth}{4}
 }{} % end file exists
 
 %%------------------------------------------------- %
@@ -471,16 +502,49 @@ $body$
 %% et donnez le nom de votre fichier .bib à la commande \bibliography{..}
 %% (consultez l'exemple au besoin).  Vous pouvez utiliser le style de votre
 %% choix.
-\bibliographystyle{plain-fr}     % Le style de la bibliographie. Notons que
+%\bibliographystyle{plain-fr}     % Le style de la bibliographie. Notons que
                                         % les extensions ne sont pas données pour ces deux fichiers.
 \def\bibname{R\'ef\'erences bibliographiques} % Nom obligatoire de la section des références.
                                               % On utilise \'e car le é cause des problèmes
                                               % dans la table des matière
 %% ENGLISH
  %\def\bibname{References}
-\bibliography{ref}     % La base de données contenant des entrées bibliographiques.
+%\bibliography{ref}     % La base de données contenant des entrées bibliographiques.
                                     % Seules celles référencées dans le texte seront ajoutées
                                     % \`a la bibliographie.
+
+% Bibliographie, pour usage avec pandoc
+%$if(natbib)$
+%$if(bibliography)$
+%$if(biblio-title)$
+%$if(has-chapters)$
+%\renewcommand\bibname{$biblio-title$}
+%$else$
+%\renewcommand\refname{$biblio-title$}
+%$endif$
+%$endif$
+%$if(beamer)$
+%\begin{frame}[allowframebreaks]{$biblio-title$}
+%  \bibliographytrue
+%  $endif$
+%  \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+%  $if(beamer)$
+%\end{frame}
+%$endif$
+%
+%$endif$
+%$endif$
+%$if(biblatex)$
+%$if(beamer)$
+%\begin{frame}[allowframebreaks]{$biblio-title$}
+%  \bibliographytrue
+%  \printbibliography[heading=none]
+%\end{frame}
+%$else$
+%\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+%$endif$
+%
+%$endif$
 
 %%------------------------------------------------- %
 %%                  Annexe A                        %
