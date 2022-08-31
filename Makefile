@@ -6,7 +6,7 @@ DOSSIER_FINAL := $(shell date +'%Y-%m-%d-%kh%M')
 tout: pages chapitres pdf # il faut faire pdf 2x pour produire TDM
 all: tout # simple alias
 
-pages: resume abstract introduction remerciements
+pages: resume abstract introduction remerciements conclusion
 
 clean:
 	@echo ""
@@ -34,6 +34,12 @@ introduction:
 	@echo "📄 Page « Introduction » ..."
 	@echo "============================"
 	pandoc src/pages/introduction.md -o tmp/introduction.md.tex
+conclusion:
+	@echo ""
+	@echo "==========================="
+	@echo "📄 Page « Conclusion » ..."
+	@echo "==========================="
+	pandoc src/pages/conclusion.md -o tmp/conclusion.md.tex
 remerciements:
 	@echo ""
 	@echo "============================="

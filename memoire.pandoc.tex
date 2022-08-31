@@ -439,6 +439,11 @@ $endif$
 
 $body$
 
+\IfFileExists{./tmp/conclusion.md.tex}{%
+  \chapter*{Conclusion}
+
+  \input{./tmp/conclusion.md.tex}
+}{} % end file exists
 %%--------------%
 %%     index    %
 %%--------------%

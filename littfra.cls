@@ -979,9 +979,21 @@
 \newcounter{paragraph}[subsubsection]
 \renewcommand\thepart          {\arabic{part}}
 \renewcommand\thechapter{\arabic{chapter}}
-\renewcommand\thesection       {\thechapter.\arabic{section}}
-\renewcommand\thesubsection    {\thesection.\arabic{subsection}}
-\renewcommand\thesubsubsection {\thesubsection .\arabic{subsubsection}}
+\renewcommand\thesection       {%
+    % Ne pas numéroter chapitres débutant par zéro
+    %\ifnum\c@chapter=0\else
+    \thechapter.\arabic{section}}
+    %\fi
+\renewcommand\thesubsection    {%
+    % Ne pas numéroter chapitres débutant par zéro
+    %\ifnum\c@chapter=0\else
+    \thesection.\arabic{subsection}}
+    %\fi
+\renewcommand\thesubsubsection {%
+    % Ne pas numéroter chapitres débutant par zéro
+    %\ifnum\c@chapter=0\else
+    \thesubsection .\arabic{subsubsection}}
+    %\fi
 \renewcommand\theparagraph     {\thesubsubsection.\arabic{paragraph}}
 \setcounter{secnumdepth}{3}
 \def\raggedcenter{\leftskip=0pt plus4em \rightskip=\leftskip

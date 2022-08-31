@@ -56,6 +56,17 @@ function introduction() {
 	echo "Fait!"
 }
 
+function conclusion() {
+	echo ""
+	echo "==========================="
+	echo "📄 Page « Conclusion » ..."
+	echo "==========================="
+
+  pandoc $PAGES_DIR/conclusion.md -o $TMP_DIR/conclusion.md.tex
+
+	echo "Fait!"
+}
+
 function remerciements() {
   pandoc $PAGES_DIR/remerciements.md -o $TMP_DIR/remerciements.md.tex
 }
@@ -73,6 +84,7 @@ function pages() {
   abstract;
   remerciements;
   introduction;
+  conclusion;
 }
 
 function chapitres() {
