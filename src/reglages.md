@@ -37,7 +37,7 @@ membrejury:
 # Nom de l’examineur externe (obligatoire pour la thèse)
 #examinateur: 
 
-# Cette option existe encore, mais elle n'a plus sa place
+# Cette option existe encore, m§is elle n'a plus sa place
 # dans la page titre. L'utiliser seulement si le directeur
 # insiste...
 # (thèse seulement)
