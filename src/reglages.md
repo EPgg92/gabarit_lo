@@ -47,4 +47,7 @@ abbreviations:
 - sigle: MM
   complete: Mémoires
 
+# Fichier de références bibliographiques
+bibliography: src/bib
+
 ...
