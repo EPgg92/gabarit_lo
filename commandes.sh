@@ -114,11 +114,7 @@ function chapitres() {
     --citeproc \
     $CITEPROC_OPTIONS \
   	$CHAPITRES_DIR/*.md \
-<<<<<<< HEAD
-  	-o $TMP_DIR/memoire.tex
-=======
   	-o $TMP_DIR/chapitres.tex
->>>>>>> 3df3625 (fonctionne avec pandoc... mais problèmes d’encodage)
 
   	echo "Fait!"
 }
