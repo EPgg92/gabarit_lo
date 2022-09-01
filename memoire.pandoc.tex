@@ -216,7 +216,7 @@ $endif$
 \usepackage[doublespacing]{setspace}
 \usepackage{biblatex}
  % ou
-%%\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\baselinestretch}{2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -527,8 +527,9 @@ $body$
   \setcounter{secnumdepth}{-1}
   \chapter*{R\'ef\'erences bibliographiques}
 
-  \renewcommand{\baselinestretch}{1}
+  \begin{singlespace}
   \input{./tmp/references.md.tex}
+  \end{singlespace}
 % On peut vouloir la numérotation à partir d’ici, ou non. Décommenter pour en avoir.
 %\setcounter{secnumdepth}{-1}
 }{} % end file exists
