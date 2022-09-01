@@ -110,24 +110,6 @@ function pages() {
 #  conclusion;
 }
 
-function corps() {
-	echo ""
-	echo "========================================"
-	echo "📖 En train de faire le corps du TeX ..."
-	echo "========================================"
-
-  pandoc \
-  	--citeproc \
-  	$CITEPROC_OPTIONS \
-  	--top-level-division=chapter \
-  	$PAGES_DIR/introduction.md \
-    $CHAPITRES_DIR/*.md \
-  	$PAGES_DIR/conclusion.md \
-  	-o $TMP_DIR/corps.md.tex
-
-  	echo "Fait!"
-}
-
 function references() {
 	echo ""
 	echo "======================================="
@@ -135,14 +117,15 @@ function references() {
 	echo "======================================="
 
   pandoc \
+  	--lua-filter multiple-bibliographies.lua \
   	--citeproc \
-  	$CITEPROC_OPTIONS \
+  	--csl=$CSL_FILE \
     $PAGES_DIR/references.md \
     -f markdown \
     -t latex \
   	-o $TMP_DIR/references.md.tex
 
-  	echo "Fait!"
+  echo "Fait!"
 }
 
 function tex() {
@@ -165,7 +148,7 @@ function tex() {
   	src/pages/conclusion.md \
     -o $TMP_DIR/memoire.tex
 
-  	echo "Fait!"
+  echo "Fait!"
 }
 
 function pdf() {
@@ -195,15 +178,10 @@ function tout() {
   pages;
   references;
   tex;
+  echo "PDF: il faut faire 2 fois pour la table des matières (et autres...)"
   pdf;
   pdf; # PDF 2x pour Table des matières (et autres)
 }
-
-# Les commandes exécutées par ce fichier
-#pages;
-#chapitres;
-#pdf;
-# c’est tout!
 
 # Allows to call a function based on arguments passed to the script
 # Example: `./build.sh pdf`
