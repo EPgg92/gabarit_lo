@@ -13,8 +13,9 @@ echo "Enregistrement des fonctions suivantes :"
 echo ""
 echo " pages       Générer les fichiers .tex individuels"
 echo " chapitres   Générer le fichier principal avec le corps (chapitres)"
-echo " pdf         Produire le PDF dans le dossier export/"
-echo " tout        Faire les 3 fonctions ci-dessus"
+echo " tex         Produire le fichier TeX (pour transformation en PDF)"
+echo " pdf         Produire le PDF dans le dossier export/ (il faut faire 2x)"
+echo " tout        Faire les 4 fonctions ci-dessus (incluant pdf 2x)"
 echo " clean       Nettoyer les fichiers temporaires dans tmp/"
 echo ""
 echo "Date: $DATE"
@@ -24,7 +25,10 @@ function clean() {
 	echo "================="
 	echo "  ...Nettoyage..."
 	echo "================="
-	rm tmp/*
+
+	rm $TMP_DIR/*
+
+	echo "  Fichiers dans $TMP_DIR/ nettoyés."
 }
 
 function resume() {
@@ -163,10 +167,10 @@ function pdf() {
 	echo ""
 	echo "---"
 	echo ""
-	echo "* Si tout s’est bien passé, le fichier a été produit dans :"
+	echo "pdf : Si tout s’est bien passé, le fichier a été produit dans :"
 	echo ""
 	echo "📂 export/"
-	echo "   📂 $DOSSIER_FINAL/"
+	echo "   📂 $DATE/"
 	echo "      📕 memoire.pdf"
 	echo ""
 }
