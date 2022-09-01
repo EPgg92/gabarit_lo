@@ -42,6 +42,7 @@
 % Aidons LaTeX à interpréter certains caractères unicode (surtout dans biblio/CSL)
 \DeclareUnicodeCharacter{1D49}{\textsuperscript{e}} % «e» en exposant
 \DeclareUnicodeCharacter{1D52}{\textsuperscript{o}} % «o» en exposant
+\DeclareUnicodeCharacter{2B3}{\textsuperscript{r}} % «r» en exposant
 \DeclareUnicodeCharacter{00B0}{\textsuperscript{o}} % «degré» => convertir en «o» en exposant
 
  % ENGLISH OPTION
@@ -477,6 +478,10 @@ $endif$
 
 %\epigraph{\itshape Begin at the beginning, the King said gravely, ``and go on till you come to the end: then stop.''}{---Lewis Carroll, \textit{Alice in Wonderland}}
 
+\IfFileExists{./tmp/chapitres.md.tex}{%
+  \input{./tmp/chapitres.md.tex}
+}{} % end file exists
+
 $body$
 
 \IfFileExists{./tmp/conclusion.md.tex}{%
@@ -509,7 +514,7 @@ $body$
 %% choix.
 %\bibliographystyle{plain-fr}     % Le style de la bibliographie. Notons que
                                         % les extensions ne sont pas données pour ces deux fichiers.
-\def\bibname{R\'ef\'erences bibliographiques} % Nom obligatoire de la section des références.
+%\def\bibname{R\'ef\'erences bibliographiques} % Nom obligatoire de la section des références.
                                               % On utilise \'e car le é cause des problèmes
                                               % dans la table des matière
 %% ENGLISH
@@ -518,38 +523,48 @@ $body$
                                     % Seules celles référencées dans le texte seront ajoutées
                                     % \`a la bibliographie.
 
+\IfFileExists{./tmp/references.md.tex}{%
+  \setcounter{secnumdepth}{-1}
+  \chapter*{R\'ef\'erences bibliographiques}
+
+  \renewcommand{\baselinestretch}{1}
+  \input{./tmp/references.md.tex}
+% On peut vouloir la numérotation à partir d’ici, ou non. Décommenter pour en avoir.
+%\setcounter{secnumdepth}{-1}
+}{} % end file exists
+
 % Bibliographie, pour usage avec pandoc
-$if(natbib)$
-$if(bibliography)$
-$if(biblio-title)$
-$if(has-chapters)$
-\renewcommand\bibname{$biblio-title$}
-$else$
-\renewcommand\refname{$biblio-title$}
-$endif$
-$endif$
-$if(beamer)$
-\begin{frame}[allowframebreaks]{$biblio-title$}
-  \bibliographytrue
-  $endif$
-  \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
-  $if(beamer)$
-\end{frame}
-$endif$
-
-$endif$
-$endif$
-$if(biblatex)$
-$if(beamer)$
-\begin{frame}[allowframebreaks]{$biblio-title$}
-  \bibliographytrue
-  \printbibliography[heading=none]
-\end{frame}
-$else$
-\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-$endif$
-
-$endif$
+%$if(natbib)$
+%$if(bibliography)$
+%$if(biblio-title)$
+%$if(has-chapters)$
+%\renewcommand\bibname{$biblio-title$}
+%$else$
+%\renewcommand\refname{$biblio-title$}
+%$endif$
+%$endif$
+%$if(beamer)$
+%\begin{frame}[allowframebreaks]{$biblio-title$}
+%  \bibliographytrue
+%  $endif$
+%  \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+%  $if(beamer)$
+%\end{frame}
+%$endif$
+%
+%$endif$
+%$endif$
+%$if(biblatex)$
+%$if(beamer)$
+%\begin{frame}[allowframebreaks]{$biblio-title$}
+%  \bibliographytrue
+%  \printbibliography[heading=none]
+%\end{frame}
+%$else$
+%\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+%$endif$
+%
+%$endif$
 
 %%------------------------------------------------- %
 %%                  Annexe A                        %

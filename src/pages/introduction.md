@@ -1,3 +1,7 @@
+---
+suppress-bibliography: true
+---
+
 \begin{singlespace}
 \epigraph{\itshape J’ai beau prendre la plus éclatante de mes voix, les hommes ne veulent point l’entendre}
 {\sc--- Madeleine-Angélique de Gomez}

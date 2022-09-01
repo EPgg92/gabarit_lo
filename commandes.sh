@@ -131,6 +131,23 @@ function chapitres() {
   	echo "Fait!"
 }
 
+function references() {
+	echo ""
+	echo "======================================="
+	echo "📚 En train de faire les references ..."
+	echo "======================================="
+
+  pandoc \
+  	--citeproc \
+  	$CITEPROC_OPTIONS \
+    $PAGES_DIR/references.md \
+    -f markdown \
+    -t latex \
+  	-o $TMP_DIR/references.md.tex
+
+  	echo "Fait!"
+}
+
 function tex() {
 	echo ""
 	echo "======================================"
@@ -142,11 +159,7 @@ function tex() {
   	--template=memoire.pandoc.tex \
     -f markdown \
     -t latex \
-    --top-level-division=chapter \
-    --citeproc \
-    $CITEPROC_OPTIONS \
   	src/reglages.md \
-  	src/chapitres/*.md \
     -o $TMP_DIR/memoire.tex
 
   	echo "Fait!"
@@ -167,7 +180,7 @@ function pdf() {
 	echo ""
 	echo "---"
 	echo ""
-	echo "pdf : Si tout s’est bien passé, le fichier a été produit dans :"
+	echo "Si tout s’est bien passé, le fichier PDF a été produit dans :"
 	echo ""
 	echo "📂 export/"
 	echo "   📂 $DATE/"
@@ -178,6 +191,7 @@ function pdf() {
 function tout() {
   pages;
   chapitres;
+  references;
   tex;
   pdf;
   pdf; # PDF 2x pour Table des matières (et autres)
