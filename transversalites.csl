@@ -359,14 +359,21 @@
     </choose>
   </macro>
   <macro name="date">
-    <choose>
-      <if variable="issued">
-        <date date-parts="year" form="text" variable="issued" prefix=", "/>
-      </if>
-      <else>
-        <text value="" prefix=", "/>
-      </else>
-    </choose>
+    <group prefix=", ">
+      <choose>
+        <if variable="original-date">
+          <date date-parts="year" form="text" variable="original-date" prefix=" [" suffix="]" />
+        </if>
+      </choose>
+      <choose>
+        <if variable="issued">
+          <date date-parts="year" form="text" variable="issued" prefix=" "/>
+        </if>
+        <else>
+          <text value="" />
+        </else>
+      </choose>
+    </group>
   </macro>
   <macro name="page-bib">
     <choose>
