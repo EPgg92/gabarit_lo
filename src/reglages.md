@@ -5,10 +5,10 @@ version: 1
 title: "Mon super titre"
 
 # Nom complet
-author: Julia Boulianne
+author: Huguette Delisle
 
 # Année du droit d’auteur
-copyrightyear: 2022
+copyrightyear: 
 
 departement: Département des littératures de langue française
 
@@ -22,10 +22,10 @@ discipline: littératures de langue française
 # L’orientation est optionnelle (voir avec votre directeur)
 #orientation: 
 
-# Nom du directeur de recherche (obligatoire)
+# Nom du directeur ou directrice de recherche (obligatoire)
 directeur: 
 
-# Nom du président du jury (obligatoire)
+# Nom du président ou présidente du jury (obligatoire)
 president: 
 # Membre du jury
 membrejury: 
@@ -34,7 +34,7 @@ membrejury:
 # Troisième membre du jury (s’il y a lieu)
 #plusmembresjury: 
 
-# Nom de l’examineur externe (obligatoire pour la thèse)
+# Nom de l’examineur ou examinatrice externe (obligatoire pour la thèse)
 #examinateur: 
 
 # Cette option existe encore, m§is elle n'a plus sa place
