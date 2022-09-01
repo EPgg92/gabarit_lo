@@ -474,7 +474,7 @@
   <macro name="number">
     <choose>
       <if is-numeric="number">
-        <text variable="number" prefix="n\textsuperscript{o}&#xA0;"/>
+        <text variable="number" prefix="n&#7506;&#xA0;"/>
       </if>
       <else>
         <text variable="number"/>
@@ -484,9 +484,9 @@
   <macro name="issue">
     <choose>
       <if is-numeric="issue">
-        <!-- &#xb0; => degree -->
+        <!-- &#xb0; => degree NON -->
         <!-- &#7506; => U+1D52 modifier letter small o -->
-        <text variable="issue" prefix="n\textsuperscript{o}&#xA0;"/>
+        <text variable="issue" prefix="n&#7506;&#xA0;"/>
       </if>
       <else>
         <text variable="issue"/>
@@ -505,7 +505,7 @@
   </macro>
   <macro name="accessed">
     <group prefix=", " delimiter=" ">
-      <text font-variant="small-caps" value="URL&#xA0;:" />
+      <text font-variant="small-caps" value="url&#xA0;:" />
       <text variable="URL" text-decoration="none"/>
     </group>
     <choose>
