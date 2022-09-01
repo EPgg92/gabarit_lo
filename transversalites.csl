@@ -474,7 +474,7 @@
   <macro name="number">
     <choose>
       <if is-numeric="number">
-        <text variable="number" prefix="n° "/>
+        <text variable="number" prefix="n\textsuperscript{o} "/>
       </if>
       <else>
         <text variable="number"/>
@@ -484,7 +484,9 @@
   <macro name="issue">
     <choose>
       <if is-numeric="issue">
-        <text variable="issue" prefix="n°&#xA0;"/>
+        <!-- &#xb0; => degree -->
+        <!-- &#7506; => U+1D52 modifier letter small o -->
+        <text variable="issue" prefix="n\textsuperscript{o}&#xA0;"/>
       </if>
       <else>
         <text variable="issue"/>

@@ -37,7 +37,12 @@
 \francais % or
 %%\anglais
 %%
-%%\usepackage[english,frenchb]{babel}
+\usepackage[english,frenchb]{babel}
+
+% Aidons un peu LaTeX à interpréter certains caractères unicode
+\DeclareUnicodeCharacter{1D49}{\textsuperscript{e}} % «e» en exposant
+\DeclareUnicodeCharacter{1D52}{\textsuperscript{o}} % «o» en exposant
+\DeclareUnicodeCharacter{00B0}{\textsuperscript{o}} % «degré» => convertir en «o» en exposant
 
  % ENGLISH OPTION
  % If you call \anglais here before the \begin{document},

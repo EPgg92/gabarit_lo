@@ -33,7 +33,11 @@ function resume() {
 	echo "📄 Page « Résumé » ..."
 	echo "======================"
 
-  pandoc $PAGES_DIR/resume.md -o $TMP_DIR/resume.md.tex
+  pandoc \
+  	--citeproc \
+  	$CITEPROC_OPTIONS \
+    $PAGES_DIR/resume.md \
+    -o $TMP_DIR/resume.md.tex
 
 	echo "Fait!"
 }
@@ -44,10 +48,11 @@ function abstract() {
 	echo "📄 Page « Abstract » ..."
 	echo "========================"
 
-  pandoc $PAGES_DIR/abstract.md \
-  --citeproc \
-  $CITEPROC_OPTIONS \
-  -o $TMP_DIR/abstract.md.tex
+  pandoc \
+  	--citeproc \
+  	$CITEPROC_OPTIONS \
+    $PAGES_DIR/abstract.md \
+    -o $TMP_DIR/abstract.md.tex
 
 	echo "Fait!"
 }
@@ -58,10 +63,11 @@ function introduction() {
 	echo "📄 Page « Introduction » ..."
 	echo "============================"
 
-  pandoc $PAGES_DIR/introduction.md \
-  --citeproc \
-  $CITEPROC_OPTIONS \
-  -o $TMP_DIR/introduction.md.tex
+  pandoc \
+  	--citeproc \
+  	$CITEPROC_OPTIONS \
+    $PAGES_DIR/introduction.md \
+    -o $TMP_DIR/introduction.md.tex
 
 	echo "Fait!"
 }
@@ -72,19 +78,21 @@ function conclusion() {
 	echo "📄 Page « Conclusion » ..."
 	echo "==========================="
 
-  pandoc $PAGES_DIR/conclusion.md \
-  --citeproc \
-  $CITEPROC_OPTIONS \
-  -o $TMP_DIR/conclusion.md.tex
+  pandoc \
+  	--citeproc \
+  	$CITEPROC_OPTIONS \
+    $PAGES_DIR/conclusion.md \
+    -o $TMP_DIR/conclusion.md.tex
 
 	echo "Fait!"
 }
 
 function remerciements() {
-  pandoc $PAGES_DIR/remerciements.md \
-  --citeproc \
-  $CITEPROC_OPTIONS \
-  -o $TMP_DIR/remerciements.md.tex
+  pandoc \
+  	--citeproc \
+  	$CITEPROC_OPTIONS \
+    $PAGES_DIR/remerciements.md \
+    -o $TMP_DIR/remerciements.md.tex
 }
 
 function pages() {
@@ -110,11 +118,11 @@ function chapitres() {
 	echo "======================================"
 
   pandoc \
+  	--citeproc \
+  	$CITEPROC_OPTIONS \
   	--top-level-division=chapter \
-    --citeproc \
-    $CITEPROC_OPTIONS \
-  	$CHAPITRES_DIR/*.md \
-  	-o $TMP_DIR/chapitres.tex
+    $CHAPITRES_DIR/*.md \
+  	-o $TMP_DIR/chapitres.md.tex
 
   	echo "Fait!"
 }
@@ -130,8 +138,11 @@ function tex() {
   	--template=memoire.pandoc.tex \
     -f markdown \
     -t latex \
+    --top-level-division=chapter \
+    --citeproc \
+    $CITEPROC_OPTIONS \
   	src/reglages.md \
-    $TMP_DIR/chapitres.tex \
+  	src/chapitres/*.md \
     -o $TMP_DIR/memoire.tex
 
   	echo "Fait!"
@@ -146,9 +157,8 @@ function pdf() {
   mkdir -p $DOSSIER_FINAL
 
   pdflatex \
-  -halt-on-error \
-  -output-directory $DOSSIER_FINAL \
-  $TMP_DIR/memoire.tex \
+    -output-directory $DOSSIER_FINAL \
+    $TMP_DIR/memoire.tex \
 
 	echo ""
 	echo "---"
