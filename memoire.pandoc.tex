@@ -217,6 +217,10 @@ $endif$
 \usepackage{biblatex}
  % ou
 \renewcommand{\baselinestretch}{2}
+% edit (Louis): la commande usepackage avec l’option
+% doublespacing ci-haut ne suffit pas, l’interligne
+% demeure à 1.5... donc il faut *aussi* utiliser
+% la commande \baselinestretch{2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -572,52 +576,11 @@ $body$
 %%------------------------------------------------- %
 
 \appendix
-\chapter{Le titre}
 
-\section{Section un de l'Annexe A}
+\IfFileExists{./tmp/annexes.md.tex}{%
+  \input{./tmp/annexes.md.tex}
+}{} % end file exists
 
-...texte...
-
-\chapter{Les différentes parties et leur ordre d'apparition}
-
-J'ajoute ici les différentes parties d'un mémoire ou d'une thèse ainsi
-que leur ordre d'apparition tel que décrit dans le guide de
-présentation des mémoires et des thèses de la Faculté des études
-supérieures.  Pour plus d'information, consultez le guide sur le site
-web de la facutlé (www.fes.umontreal.ca).
-
-\newcount\colnum
-\colnum=1
-\def\i{\number\colnum. \global\advance\colnum by 1\ignorespaces}
-\begin{table}[p]
-  \begin{center}
-    \begin{tabular}{|l|l|r|}\hline
-       \noindent\hfil
-         \textbf{\strut Ordre des éléments constitutifs du mémoire ou de la thèse}
-         \hfil\span\omit\span\omit\\\hline % \span\omit pour couvrir plus d'une
-                                           % case sans utiliser le package multirow ou autre
-      \i &  La page de titre & obligatoire\\\hline
-      \i &  La page d'identification des membres du jury & obligatoire\\\hline
-      \i &  Le résumé en français et les mots clés français\kern3em& obligatoires\\\hline
-      \i &  Le résumé en anglais et les mots clés anglais & obligatoires\\\hline
-      \i &  Le résumé dans une autre langue que l'anglais & obligatoire \\
-         &  ou le français (si le document est écrit dans &\\
-         &  une autre langue que l'anglais ou le français)&\\\hline
-      \i &  Le résumé de vulgarisation& facultatif\\\hline
-      \i &  La table des matières, la liste des tableaux,& obligatoires\\
-         &   la liste des figures ou autre &\\\hline
-      \i &  La liste des sigles et des abréviations& obligatoire\\\hline
-      \i &  La dédicace& facultative\\\hline
-      \i &  Les remerciements & facultatifs\\\hline
-      \i &  L'avant-propos & facultatif\\\hline
-      \i &  Le corps de l'ouvrage& obligatoire\\\hline
-      \i &  Les index& facultatif\\\hline
-      \i &  Les références bibliographiques & obligatoires\\\hline
-      \i &  Les annexes & facultatifs\\\hline
-      \i &  Les documents spéciaux & facultatifs\\\hline
-    \end{tabular}
-  \end{center}
-\end{table}
 
 \end{document}
 

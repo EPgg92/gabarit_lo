@@ -1,5 +1,6 @@
 PAGES_DIR=src/pages
 CHAPITRES_DIR=src/chapitres
+ANNEXES_DIR=src/annexes
 BIBLIOGRAPHY_FILE=src/bib.json
 CSL_FILE=transversalites.csl
 TMP_DIR=tmp
@@ -12,6 +13,7 @@ echo ""
 echo "Enregistrement des fonctions suivantes :"
 echo ""
 echo " pages       Générer les fichiers .tex individuels dans le dossier $TMP_DIR/"
+echo " annexes     Générer les annexes dans le dossier $TMP_DIR/"
 echo " tex         Générer le fichier TeX principal avec le corps (chapitres + intro + conclusion)"
 echo " pdf         Produire le PDF dans le dossier export/ (il faut faire 2x)"
 echo " tout        Faire les 4 fonctions ci-dessus (incluant pdf 2x)"
@@ -106,6 +108,8 @@ function pages() {
   resume;
   abstract;
   remerciements;
+  # on n’inclut pas introduction ni conclusion pour maintenir la continuité
+  # des références dans les corps du texte
 #  introduction;
 #  conclusion;
 }
@@ -124,6 +128,22 @@ function references() {
     -f markdown \
     -t latex \
   	-o $TMP_DIR/references.md.tex
+
+  echo "Fait!"
+}
+
+function annexes() {
+	echo ""
+	echo "====================================="
+	echo "📎 En train de faire les annexes ..."
+	echo "===================================="
+
+  pandoc \
+    --top-level-division=chapter \
+    $ANNEXES_DIR/*.md \
+    -f markdown \
+    -t latex \
+  	-o $TMP_DIR/annexes.md.tex
 
   echo "Fait!"
 }
@@ -177,6 +197,7 @@ function pdf() {
 function tout() {
   pages;
   references;
+  annexes;
   tex;
   echo "PDF: il faut faire 2 fois pour la table des matières (et autres...)"
   pdf;
