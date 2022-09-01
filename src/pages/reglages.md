@@ -2,19 +2,19 @@
 version: 1
 
 # Attention aux deux-points (garder les guillemets doubles pour éviter des problèmes)
-title: "Une poétique de la gaieté dans les *Mémoires de la vie de Henriette-Sylvie de Molière* de Madame de Villedieu"
+title: "Mon super titre"
 
 # Nom complet
-author: Julia Boulianne
+author: Huguette Delisle
 
 # Année du droit d’auteur
-copyrightyear: 2022
+copyrightyear: 
 
 departement: Département des littératures de langue française
 
 # Date du DÉPÔT INITIAL (ou du 2e dépôt s'il y a corrections majeures)
 # Le paramètre peut être omis, la date d’aujourd’hui (mois année) sera affichée
-date: Août 2022
+date: 
 
 # La discipline est obligatoire (débuter par une minuscule)
 discipline: littératures de langue française
@@ -22,10 +22,10 @@ discipline: littératures de langue française
 # L’orientation est optionnelle (voir avec votre directeur)
 #orientation: 
 
-# Nom du directeur de recherche (obligatoire)
-directeur: Judith Sribnai
+# Nom du directeur ou directrice de recherche (obligatoire)
+directeur: 
 
-# Nom du président du jury (obligatoire)
+# Nom du président ou présidente du jury (obligatoire)
 president: 
 # Membre du jury
 membrejury: 
@@ -34,7 +34,7 @@ membrejury:
 # Troisième membre du jury (s’il y a lieu)
 #plusmembresjury: 
 
-# Nom de l’examineur externe (obligatoire pour la thèse)
+# Nom de l’examineur ou examinatrice externe (obligatoire pour la thèse)
 #examinateur: 
 
 # Cette option existe encore, m§is elle n'a plus sa place
@@ -44,7 +44,7 @@ membrejury:
 #repdoyen: 
 
 abbreviations:
-- sigle: MHS
-  complete: "*Mémoires de la vie de Henriette-Sylvie de Molière*"
+- sigle: MM
+  complete: Mémoires
 
 ...
