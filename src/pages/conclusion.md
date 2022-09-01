@@ -2,7 +2,7 @@
 suppress-bibliography: true
 ---
 
-# Conclusion 
+# Conclusion {.unnumbered}
 
 La gaieté qui traverse les *Mémoires de la vie de Henriette-Sylvie de Molière* est porteuse de nombreuses tensions, elle prend plusieurs formes et remplit une variété de rôles. Les thèmes du hasard et de la fortune légitiment, au regard de la structure narrative, l’intégration d’une immense quantité de péripéties et de surprises. Cette surcharge évènementielle permet tout à la fois d’insuffler une sorte de légèreté au roman, et de souligner la grande vulnérabilité des femmes devant la violence du monde. Et même s’il découle de la reconnaissance de l’impuissance des hommes à se protéger de la misère, le rejet de l’éthique prudentielle, loin de mener à un renoncement désenchanté, sert à justifier la gaieté et les badineries d’Henriette-Sylvie. Au milieu du brouillard d’imprévisibilité généré par cette abondance de hasards, ce qui est prévisible ressort avec un éclat prononcé. Portées par le comique de répétition qui dédramatise le malheur autant qu’il en multiplie les occurrences, la brutalité du désir des hommes, la puissance destructrice de la rumeur et les lacunes du système de justice se révèlent être ce qui cause réellement les malheurs des femmes du roman. Loin des mystères de la Providence, ce qui se cache derrière la misère féminine s'avère résolument terre-à-terre. En brisant la séquence répétitive qui mène inexorablement au malheur de l’héroïne, les scènes de travestissement font office d’asile tant pour les lecteur.trice.s (qui peuvent se réjouir de la nouveauté des aventures racontées) que pour Henriette-Sylvie, qui peut enfin profiter sans crainte des plaisirs de la liberté. Mais les travestissements de l’héroïne sont aussi porteurs d’une charge contestataire : en tenant, avec succès, le rôle d’un homme de l’aristocratie, elle remet en question la validité des hiérarchies des sexes et celle l’ordre social, souvent considérés comme des vérités immanentes. 
 
@@ -20,5 +20,3 @@ Tous.tes ceux et celles qui ont déjà essayé d’attirer l’attention des gen
 [^hb00x1b]: [@esmein-sarrazin_2008 171]
 [^k6ld000s]: [@kelly_1986b 80]
 [^kell6cidnw]: [@kelly_1986b 81]
-
- 

@@ -31,6 +31,14 @@ La stratégie s’appuie sur la pile logicielle suivante :
    - 2.3. `src/chapitres/` : ce qui compose le corps du mémoire, les chapitres. Tout en-tête de niveau 1 dénote un chapitre.
 3. Ouvrir un terminal, se déplacer dans le dossier de travail, et lancer les commandes disponibles (voir plus bas).
 
+## Fichiers et édition
+
+Tous les fichiers sources (édités par quelqu’un) vont dans le dossier `src/`. On y trouve :
+
+- `chapitres/` : les fichiers des chapitres, dans l’ordre dans lequel ils seront listés. Le découpage des fichiers n’est pas important, ce qui importe c’est que chaque en-tête de niveau 1 correspond à un nouveau chapitre.
+- `pages/`
+- `reglages.md`
+
 ## Commandes disponibles
 
 Au préalable, enregistrer les commandes (ceci devra être fait à chaque session de terminal) :

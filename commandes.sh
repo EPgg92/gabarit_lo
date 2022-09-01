@@ -11,9 +11,8 @@ CITEPROC_OPTIONS="--bibliography=$BIBLIOGRAPHY_FILE --csl=$CSL_FILE"
 echo ""
 echo "Enregistrement des fonctions suivantes :"
 echo ""
-echo " pages       Générer les fichiers .tex individuels"
-echo " chapitres   Générer le fichier principal avec le corps (chapitres)"
-echo " tex         Produire le fichier TeX (pour transformation en PDF)"
+echo " pages       Générer les fichiers .tex individuels dans le dossier $TMP_DIR/"
+echo " tex         Générer le fichier TeX principal avec le corps (chapitres + intro + conclusion)"
 echo " pdf         Produire le PDF dans le dossier export/ (il faut faire 2x)"
 echo " tout        Faire les 4 fonctions ci-dessus (incluant pdf 2x)"
 echo " clean       Nettoyer les fichiers temporaires dans tmp/"
@@ -38,8 +37,6 @@ function resume() {
 	echo "======================"
 
   pandoc \
-  	--citeproc \
-  	$CITEPROC_OPTIONS \
     $PAGES_DIR/resume.md \
     -o $TMP_DIR/resume.md.tex
 
@@ -53,8 +50,6 @@ function abstract() {
 	echo "========================"
 
   pandoc \
-  	--citeproc \
-  	$CITEPROC_OPTIONS \
     $PAGES_DIR/abstract.md \
     -o $TMP_DIR/abstract.md.tex
 
@@ -69,7 +64,7 @@ function introduction() {
 
   pandoc \
   	--citeproc \
-  	$CITEPROC_OPTIONS \
+  	--csl=$CSL_FILE \
     $PAGES_DIR/introduction.md \
     -o $TMP_DIR/introduction.md.tex
 
@@ -111,22 +106,24 @@ function pages() {
   resume;
   abstract;
   remerciements;
-  introduction;
-  conclusion;
+#  introduction;
+#  conclusion;
 }
 
-function chapitres() {
+function corps() {
 	echo ""
-	echo "======================================"
-	echo "📖 En train de faire les chapitres ..."
-	echo "======================================"
+	echo "========================================"
+	echo "📖 En train de faire le corps du TeX ..."
+	echo "========================================"
 
   pandoc \
   	--citeproc \
   	$CITEPROC_OPTIONS \
   	--top-level-division=chapter \
+  	$PAGES_DIR/introduction.md \
     $CHAPITRES_DIR/*.md \
-  	-o $TMP_DIR/chapitres.md.tex
+  	$PAGES_DIR/conclusion.md \
+  	-o $TMP_DIR/corps.md.tex
 
   	echo "Fait!"
 }
@@ -150,16 +147,22 @@ function references() {
 
 function tex() {
 	echo ""
-	echo "======================================"
-	echo "🛠 Fichier TeX + biblio..."
-	echo "======================================"
+	echo "================================================"
+	echo "📖 En train de faire le corps du TeX + modèle..."
+	echo "================================================"
 
   pandoc \
   	--standalone \
+  	--top-level-division=chapter \
+  	--citeproc \
+  	$CITEPROC_OPTIONS \
   	--template=memoire.pandoc.tex \
     -f markdown \
     -t latex \
   	src/reglages.md \
+  	src/pages/introduction.md \
+  	src/chapitres/*.md \
+  	src/pages/conclusion.md \
     -o $TMP_DIR/memoire.tex
 
   	echo "Fait!"
@@ -190,7 +193,6 @@ function pdf() {
 
 function tout() {
   pages;
-  chapitres;
   references;
   tex;
   pdf;

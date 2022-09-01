@@ -464,13 +464,13 @@ $endif$
 %%                                                  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\IfFileExists{./tmp/introduction.md.tex}{%
-  \setcounter{secnumdepth}{-1}
-  \chapter*{Introduction}
-
-  \input{./tmp/introduction.md.tex}
-  \setcounter{secnumdepth}{4}
-}{} % end file exists
+%\IfFileExists{./tmp/introduction.md.tex}{%
+%  \setcounter{secnumdepth}{-1}
+%  \chapter*{Introduction}
+%
+%  \input{./tmp/introduction.md.tex}
+%  \setcounter{secnumdepth}{4}
+%}{} % end file exists
 
 %%------------------------------------------------- %
 %%                pages 1                           %
@@ -478,20 +478,20 @@ $endif$
 
 %\epigraph{\itshape Begin at the beginning, the King said gravely, ``and go on till you come to the end: then stop.''}{---Lewis Carroll, \textit{Alice in Wonderland}}
 
-\IfFileExists{./tmp/chapitres.md.tex}{%
-  \input{./tmp/chapitres.md.tex}
-}{} % end file exists
+%\IfFileExists{./tmp/chapitres.md.tex}{%
+%  \input{./tmp/chapitres.md.tex}
+%}{} % end file exists
 
 $body$
 
-\IfFileExists{./tmp/conclusion.md.tex}{%
-  \setcounter{secnumdepth}{-1}
-  \chapter*{Conclusion}
-
-  \input{./tmp/conclusion.md.tex}
-  % On peut vouloir la numérotation à partir d’ici, ou non. Décommenter pour en avoir.
-  %\setcounter{secnumdepth}{-1}
-}{} % end file exists
+%\IfFileExists{./tmp/conclusion.md.tex}{%
+%  \setcounter{secnumdepth}{-1}
+%  \chapter*{Conclusion}
+%
+%  \input{./tmp/conclusion.md.tex}
+%  % On peut vouloir la numérotation à partir d’ici, ou non. Décommenter pour en avoir.
+%  %\setcounter{secnumdepth}{-1}
+%}{} % end file exists
 %%--------------%
 %%     index    %
 %%--------------%
