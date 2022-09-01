@@ -474,7 +474,7 @@
   <macro name="number">
     <choose>
       <if is-numeric="number">
-        <text variable="number" prefix="n\textsuperscript{o} "/>
+        <text variable="number" prefix="n\textsuperscript{o}&#xA0;"/>
       </if>
       <else>
         <text variable="number"/>
