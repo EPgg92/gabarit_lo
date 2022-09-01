@@ -47,4 +47,14 @@ abbreviations:
 - sigle: MHS
   complete: "*Mémoires de la vie de Henriette-Sylvie de Molière*"
 
+mots-clefs:
+- un
+- deux
+- trois
+
+keywords:
+- one
+- two
+- three
+
 ...

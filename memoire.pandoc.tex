@@ -216,7 +216,7 @@ $endif$
 \usepackage[doublespacing]{setspace}
 \usepackage{biblatex}
  % ou
-\renewcommand{\baselinestretch}{2}
+%\renewcommand{\baselinestretch}{2}
 % edit (Louis): la commande usepackage avec l’option
 % doublespacing ci-haut ne suffit pas, l’interligne
 % demeure à 1.5... donc il faut *aussi* utiliser
@@ -358,6 +358,10 @@ $endif$
   \chapter*{Résumé}
 
   \input{./tmp/resume.md.tex}
+
+  $if(mots-clefs)$
+  \textbf{Mots-clefs} : $for(mots-clefs)$$mots-clefs$$sep$, $endfor$
+  $endif$
 }{} % end file exists
 
 \IfFileExists{./tmp/abstract.md.tex}{%
@@ -369,6 +373,9 @@ $endif$
   \chapter*{Abstract}
 
   \input{./tmp/abstract.md.tex}
+  $if(keywords)$
+  \textbf{Keywords}: $for(keywords)$$keywords$$sep$, $endfor$
+  $endif$
 }{} % end file exists
 
 %%------------------------------------------------- %
@@ -488,6 +495,7 @@ $endif$
 %  \input{./tmp/chapitres.md.tex}
 %}{} % end file exists
 
+\renewcommand{\baselinestretch}{2}
 $body$
 
 %\IfFileExists{./tmp/conclusion.md.tex}{%
@@ -580,7 +588,9 @@ $body$
 \appendix
 
 \IfFileExists{./tmp/annexes.md.tex}{%
+  \begin{spacing}{1.5}
   \input{./tmp/annexes.md.tex}
+  \end{spacing}
 }{} % end file exists
 
 
