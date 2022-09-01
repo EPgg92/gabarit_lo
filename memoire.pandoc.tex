@@ -110,12 +110,12 @@
   % dans un terminal.) Ces données sont utiles, par exemple,
   % pour augmenter les chances qu'un algorithme de recherche
   % trouve votre document sur Internet, une fois diffusé.
-%%\hypersetup{
-%%  pdftitle = {Titre de la thèse / du mémoire},
-%%  pdfauthor = {auteur·e},
-%%  pdfsubject = {Ex: Transformation de Fourier ; régressions linéaires ; ... },
-%%  pdfkeywords = {Ex: mathématiques, statistiques, groupes, variables aléatoires,...}
-%%}
+\hypersetup{
+  pdftitle = {$title$},
+  pdfauthor = {$author$},
+  pdfsubject = {$title$},
+  pdfkeywords = {$for(mots-clefs)$$mots-clefs$$sep$, $endfor$}
+}
 
 %% Définition des environnements utiles pour un mémoire scientifique.
 %% La numérotation est laissée à la discrétion de l'auteur·e. L'exemple
@@ -216,7 +216,7 @@ $endif$
 \usepackage[doublespacing]{setspace}
 \usepackage{biblatex}
  % ou
-%\renewcommand{\baselinestretch}{2}
+\renewcommand{\baselinestretch}{2}
 % edit (Louis): la commande usepackage avec l’option
 % doublespacing ci-haut ne suffit pas, l’interligne
 % demeure à 1.5... donc il faut *aussi* utiliser
@@ -357,11 +357,14 @@ $endif$
   \francais
   \chapter*{Résumé}
 
+  \begin{spacing}{1.5}
   \input{./tmp/resume.md.tex}
 
   $if(mots-clefs)$
   \textbf{Mots-clefs} : $for(mots-clefs)$$mots-clefs$$sep$, $endfor$
   $endif$
+
+  \end{spacing}
 }{} % end file exists
 
 \IfFileExists{./tmp/abstract.md.tex}{%
@@ -372,11 +375,13 @@ $endif$
   \anglais
   \chapter*{Abstract}
 
+  \begin{spacing}{1.5}
   \input{./tmp/abstract.md.tex}
 
   $if(keywords)$
   \textbf{Keywords}: $for(keywords)$$keywords$$sep$, $endfor$
   $endif$
+  \end{spacing}
 }{} % end file exists
 
 %%------------------------------------------------- %
@@ -496,7 +501,6 @@ $endif$
 %  \input{./tmp/chapitres.md.tex}
 %}{} % end file exists
 
-\renewcommand{\baselinestretch}{2}
 $body$
 
 %\IfFileExists{./tmp/conclusion.md.tex}{%
