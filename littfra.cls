@@ -695,22 +695,22 @@
         % signature et donc nécessité une ligne vide).
 
                 %Obligatoire
-            \lignemembre\@president\titre{pr\'esident·e-rapporteur·euse}
+            \lignemembre\@president\titre{pr\'esident.e-rapporteur.euse}
             \vfil
 
                 %Obligatoire
-            \lignemembre\@directeur\titre{directeur·trice de recherche}
+            \lignemembre\@directeur\titre{directeur.trice de recherche}
             \vfil
 
                 %Optionnel
             \ifx\@codirecteur\empty\else
-                \lignemembre\@codirecteur\titre{codirecteur·trice}
+                \lignemembre\@codirecteur\titre{codirecteur.trice}
                 \vfil
             \fi
 
                 %Optionnel
             \ifx\@codirecteurs\empty\else
-                \lignemembre\@codirecteurs\titre{codirecteur·trice}
+                \lignemembre\@codirecteurs\titre{codirecteur.trice}
                 \vfil
             \fi
 
@@ -733,7 +733,7 @@
 
                 %Nécessaire seulement pour les thèses
             \ifphd@
-                \lignemembre\@examinateur\titre{examinateur·trice externe}
+                \lignemembre\@examinateur\titre{examinateur.trice externe}
                 \vfil
             \fi
 
