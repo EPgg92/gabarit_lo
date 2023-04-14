@@ -1,4 +1,5 @@
 ---
+# Mention explicite du versionnage (à votre discrétion)
 version: 1
 
 # Attention aux deux-points (garder les guillemets doubles pour éviter des problèmes)
@@ -13,7 +14,8 @@ copyrightyear: 2022
 departement: Département des littératures de langue française
 
 # Date du DÉPÔT INITIAL (ou du 2e dépôt s'il y a corrections majeures)
-# Le paramètre peut être omis, la date d’aujourd’hui (mois année) sera affichée
+# Le paramètre peut être omis, la date d’aujourd’hui (mois année)
+# sera alors affichée par défaut
 date: Août 2022
 
 # La discipline est obligatoire (débuter par une minuscule)
@@ -37,7 +39,7 @@ membrejury:
 # Nom de l’examineur externe (obligatoire pour la thèse)
 #examinateur: 
 
-# Cette option existe encore, m§is elle n'a plus sa place
+# Cette option existe encore, mais elle n'a plus sa place
 # dans la page titre. L'utiliser seulement si le directeur
 # insiste...
 # (thèse seulement)
@@ -47,11 +49,15 @@ abbreviations:
 - sigle: MHS
   complete: "*Mémoires de la vie de Henriette-Sylvie de Molière*"
 
+# Les mots-clefs pourront aussi se retrouver dans les métadonnées;
+# c’est pourquoi il est pratique de les lister ainsi
+# mots-clefs (fr)
 mots-clefs:
 - un
 - deux
 - trois
 
+# keywords (en)
 keywords:
 - one
 - two
