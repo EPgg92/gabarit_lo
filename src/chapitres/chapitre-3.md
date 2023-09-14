@@ -1,5 +1,2 @@
----
-suppress-bibliography: true
----
-
+# Titre du chapitre
 
