@@ -2,7 +2,7 @@ PAGES_DIR=src/pages
 CHAPITRES_DIR=src/chapitres
 ANNEXES_DIR=src/annexes
 BIBLIOGRAPHY_FILE=src/bib.json
-CSL_FILE=transversalites.csl
+CSL_FILE=etudes-francaises.csl
 TMP_DIR=tmp
 DATE=$(date +'%Y-%m-%d-%Hh%M')
 DOSSIER_FINAL="export/$DATE"
@@ -121,7 +121,7 @@ function references() {
 	echo "======================================="
 
   pandoc \
-  	--lua-filter multiple-bibliographies.lua \
+  	--lua-filter multibib.lua \
   	--citeproc \
   	--csl=$CSL_FILE \
     $PAGES_DIR/references.md \
@@ -159,7 +159,7 @@ function tex() {
   	--top-level-division=chapter \
   	--citeproc \
   	$CITEPROC_OPTIONS \
-  	--template=memoire.pandoc.tex \
+  	--template=tmpl/memoire.pandoc.tex \
     -f markdown \
     -t latex \
   	src/reglages.md \

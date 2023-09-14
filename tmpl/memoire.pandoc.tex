@@ -37,11 +37,12 @@
 \francais % or
 %%\anglais
 %%
-%\usepackage[english,frenchb]{babel}
+%\usepackage[english,french]{babel}
 
 % Aidons LaTeX à interpréter certains caractères unicode (surtout dans biblio/CSL)
 \DeclareUnicodeCharacter{1D49}{\textsuperscript{e}} % «e» en exposant
 \DeclareUnicodeCharacter{1D52}{\textsuperscript{o}} % «o» en exposant
+\DeclareUnicodeCharacter{02E2}{\textsuperscript{s}} % «s» en exposant
 \DeclareUnicodeCharacter{2B3}{\textsuperscript{r}} % «r» en exposant
 \DeclareUnicodeCharacter{00B0}{\textsuperscript{o}} % «degré» => convertir en «o» en exposant
 
@@ -68,6 +69,81 @@
 
 %% Packages utiles.
 \usepackage{graphicx,amssymb,subfigure,icomma}
+
+% figures
+% via le modèle pandoc: https://github.com/jgm/pandoc/blob/main/data/templates/default.latex
+%\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+$if(svg)$
+\usepackage{svg}
+$endif$
+
+% From https://github.com/jgm/pandoc/blob/main/data/templates/default.latex
+$if(indent)$
+$else$
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+$endif$
+$if(verbatim-in-note)$
+\usepackage{fancyvrb}
+$endif$
+
+\usepackage{xcolor}
+% combiné avec xcolor, on peut utiliser la commande `hl{texte en subrillance}`
+% voir https://tex.stackexchange.com/questions/114866/highlight-color-parts-of-text
+\usepackage{soul}
+
+$if(geometry)$
+$if(beamer)$
+\geometry{$for(geometry)$$geometry$$sep$,$endfor$}
+$else$
+\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+$endif$
+$endif$
+$if(beamer)$
+\newif\ifbibliography
+$endif$
+$if(listings)$
+\usepackage{listings}
+\newcommand{\passthrough}[1]{#1}
+\lstset{defaultdialect=[5.3]Lua}
+\lstset{defaultdialect=[x86masm]Assembler}
+$endif$
+$if(lhs)$
+\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+$endif$
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+% end imported chunk
+
+% tables
+$if(tables)$
+\usepackage{longtable,booktabs,array}
+$if(multirow)$
+\usepackage{multirow}
+$endif$
+\usepackage{calc} % for calculating minipage widths
+$endif$
 %% icomma       permet d'écrire les nombres décimaux en
 %%                  français (p.ex. 1,23 plutôt que 1.23)
 %% subfigure    simplifie l'inclusion de figures côtes-à-côtes
@@ -254,6 +330,10 @@ $endif$
 
 \title{$title$}
 
+$if(subtitle)$
+\subtitle{$subtitle$}
+$endif$
+
 $if(author)$
 \author{$author$}
 $endif$
@@ -344,6 +424,8 @@ $endif$
 %\setlength{\parskip}{13pt plus 2pt minus 1pt}
 % Fin des réglages macro-typo
 
+\setlength{\parindent}{30pt}
+\setlength{\parskip}{0pt}
 
  % Pour générer la deuxième page titre, il faut appeler à nouveau \maketitle
  % Cette page est obligatoire.
@@ -361,7 +443,7 @@ $endif$
   \input{./tmp/resume.md.tex}
 
   $if(mots-clefs)$
-  \textbf{Mots-clefs} : $for(mots-clefs)$$mots-clefs$$sep$, $endfor$
+  \textbf{Mots-clefs} : $for(mots-clefs)$$mots-clefs$$sep$, $endfor$.
   $endif$
 
   \end{spacing}
@@ -379,7 +461,7 @@ $endif$
   \input{./tmp/abstract.md.tex}
 
   $if(keywords)$
-  \textbf{Keywords}: $for(keywords)$$keywords$$sep$, $endfor$
+  \textbf{Keywords}: $for(keywords)$$keywords$$sep$, $endfor$.
   $endif$
   \end{spacing}
 }{} % end file exists
@@ -465,7 +547,9 @@ $endif$
 
   \chapter*{Remerciements}
 
+  \begin{spacing}{1.5}
   \input{./tmp/remerciements.md.tex}
+  \end{spacing}
 }{} % end file exists
 
  %
@@ -483,13 +567,13 @@ $endif$
 %%                                                  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\IfFileExists{./tmp/introduction.md.tex}{%
-%  \setcounter{secnumdepth}{-1}
-%  \chapter*{Introduction}
-%
-%  \input{./tmp/introduction.md.tex}
-%  \setcounter{secnumdepth}{4}
-%}{} % end file exists
+\IfFileExists{./tmp/introduction.md.tex}{%
+  \setcounter{secnumdepth}{-1}
+  \chapter*{Introduction}
+
+  \input{./tmp/introduction.md.tex}
+  \setcounter{secnumdepth}{4}
+}{} % end file exists
 
 %%------------------------------------------------- %
 %%                pages 1                           %
@@ -503,14 +587,17 @@ $endif$
 
 $body$
 
-%\IfFileExists{./tmp/conclusion.md.tex}{%
-%  \setcounter{secnumdepth}{-1}
-%  \chapter*{Conclusion}
-%
-%  \input{./tmp/conclusion.md.tex}
-%  % On peut vouloir la numérotation à partir d’ici, ou non. Décommenter pour en avoir.
-%  %\setcounter{secnumdepth}{-1}
-%}{} % end file exists
+\IfFileExists{./tmp/conclusion.md.tex}{%
+  \setcounter{secnumdepth}{-1}
+  %% si la numérotation des notes de pas de page se fait par chapitre,
+  %% on doit remet le compteur à zéro pour cette section (qui n'est pas numérotée)
+  %\setcounter{footnote}{0}
+  \chapter*{Conclusion}
+
+  \input{./tmp/conclusion.md.tex}
+  % On peut vouloir la numérotation à partir d’ici, ou non. Décommenter pour en avoir.
+  %\setcounter{secnumdepth}{-1}
+}{} % end file exists
 %%--------------%
 %%     index    %
 %%--------------%
@@ -546,7 +633,7 @@ $body$
   \setcounter{secnumdepth}{-1}
   \chapter*{R\'ef\'erences bibliographiques}
 
-  \begin{spacing}{1.15}
+  \begin{spacing}{1.35}
   \input{./tmp/references.md.tex}
   \end{spacing}
 % On peut vouloir la numérotation à partir d’ici, ou non. Décommenter pour en avoir.
@@ -599,10 +686,31 @@ $body$
 }{} % end file exists
 
 
+%%------------------------------------------------- %
+%%                  Colophon                        %
+%%------------------------------------------------- %
+
+\newpage
+\pagenumbering{gobble}
+\setlength{\parindent}{0pt}
+
+\vspace*{\fill}
+
+\centering
+\footnotesize
+\textsc{cc by-sa 4.0}
+
+La licence de libre diffusion autorise tous les usages \\
+non commerciaux, avec un partage dans les mêmes conditions.
+
+Ce mémoire est composé en Latin Modern, en recourant notamment à \\
+pandoc de John McFarlane et au \LaTeX{} de Donald Knuth.
+
+
 \end{document}
 
 
 
 \endinput
 %%
-%% End of file `gabaritmem.tex'.
+%% End of file `memoire.pandoc.tex'.

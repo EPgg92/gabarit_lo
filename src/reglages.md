@@ -1,22 +1,28 @@
 ---
 # Mention explicite du versionnage (à votre discrétion)
-version: 1
+version: 1.0-beta
 
 # Attention aux deux-points (garder les guillemets doubles pour éviter des problèmes)
-title: "Une poétique de la gaieté dans les *Mémoires de la vie de Henriette-Sylvie de Molière* de Madame de Villedieu"
+title: ""
+# le sous-titre est évidemment optionnel, mais très fréquent dans les
+# travaux en littératures
+subtitle: ""
 
 # Nom complet
-author: Julia Boulianne
+author: 
+
+# Langue du document
+lang: fr
 
 # Année du droit d’auteur
-copyrightyear: 2022
+copyrightyear: 2023
 
 departement: Département des littératures de langue française
 
 # Date du DÉPÔT INITIAL (ou du 2e dépôt s'il y a corrections majeures)
 # Le paramètre peut être omis, la date d’aujourd’hui (mois année)
 # sera alors affichée par défaut
-date: Août 2022
+date: Août 2023
 
 # La discipline est obligatoire (débuter par une minuscule)
 discipline: littératures de langue française
@@ -25,7 +31,7 @@ discipline: littératures de langue française
 #orientation: 
 
 # Nom du directeur de recherche (obligatoire)
-directeur: Judith Sribnai
+directeur: 
 
 # Nom du président du jury (obligatoire)
 president: 
@@ -46,8 +52,8 @@ membrejury:
 #repdoyen: 
 
 abbreviations:
-- sigle: MHS
-  complete: "*Mémoires de la vie de Henriette-Sylvie de Molière*"
+#- sigle: X
+#  complete: "xxx"
 
 # Les mots-clefs pourront aussi se retrouver dans les métadonnées;
 # c’est pourquoi il est pratique de les lister ainsi
