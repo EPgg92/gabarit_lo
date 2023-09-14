@@ -20,7 +20,8 @@ La stratégie s’appuie sur la pile logicielle suivante :
 
 - [Pandoc](https://pandoc.org/)
 - [LaTeX](https://www.latex-project.org/)
-- Un terminal avec un shell style [`bash`](https://www.gnu.org/software/bash/) ou [`zsh`](https://www.zsh.org/) (pour exécuter les commandes)
+- [Make](https://www.gnu.org/software/make/) (la distribution GNU spécifiquement; celle distribuée sous macOS, BSD, ne garantit pas des résultats cohérents)
+- ... sinon, un terminal avec un shell style [`bash`](https://www.gnu.org/software/bash/) ou [`zsh`](https://www.zsh.org/) (pour exécuter les commandes transférées dans `commandes.sh`), mais Make est préférable
 
 ## Installation
 
@@ -29,6 +30,8 @@ La stratégie s’appuie sur la pile logicielle suivante :
    - 2.1. `src/reglages.md` : paratexte formel ou légal (titre, auteur, date, jury, abbréviations, etc.)
    - 2.2. `src/pages/` : pages à gérer séparément (Résumé, Introduction, etc.)
    - 2.3. `src/chapitres/` : ce qui compose le corps du mémoire, les chapitres. Tout en-tête de niveau 1 dénote un chapitre.
+- 2.4. `src/bibliographie.json` : la bibliographie exportée à partir de Zotero.
+- 2.5. `src/biblio__<section>.json` : chaque `<section>` de la bibliographie exportée à partir de Zotero (à raccorder avec `src/pages/references.md`).
 3. Ouvrir un terminal, se déplacer dans le dossier de travail, et lancer les commandes disponibles (voir plus bas).
 
 ## Fichiers et édition
@@ -40,6 +43,34 @@ Tous les fichiers sources (édités par quelqu’un) vont dans le dossier `src/`
 - `reglages.md`
 
 ## Commandes disponibles
+
+<details>
+<summary>
+Avec Make (recommandé)
+</summary>
+
+```bash
+make memoire.pdf
+```
+
+**Note** : si pandoc ne recoonnaît pas l'option _hanging indent_, une intervention manuelle doit être faite dans la bibliographie générée dans un état intermédiaire `tmp/bibliographie.tex`.
+
+```tex
+%% Si pandoc ne reconnaît pas la classe `.hanging-indent`, il faut
+%% renseigner le premier paramètre avec `1`.
+%% \begin{CSLReferences}{0}{0} %% problème! le paramètre est `0`
+
+\begin{CSLReferences}{1}{0}    %% correction manuelle
+```
+
+Relancer la commande `make memoire.pdf` après la correction de ce fichier.
+
+</details>
+
+<details>
+<summary>
+Avec bash/zsh
+</summary>
 
 Au préalable, enregistrer les commandes (ceci devra être fait à chaque session de terminal) :
 
@@ -63,6 +94,8 @@ Exemple d’utilisation en ligne de commande :
 ```shell
 tout
 ```
+
+</details>
 
 ## Rédaction
 
