@@ -53,7 +53,7 @@ Avec Make (recommandé)
 make memoire.pdf
 ```
 
-**Note** : si pandoc ne recoonnaît pas l'option _hanging indent_, une intervention manuelle doit être faite dans la bibliographie générée dans un état intermédiaire `tmp/bibliographie.tex`.
+**Note** : si pandoc ne recoonnaît pas l'option _hanging indent_, une intervention manuelle doit être faite dans la bibliographie générée dans un état intermédiaire `tmp/bibliographie.md.tex`.
 
 ```tex
 %% Si pandoc ne reconnaît pas la classe `.hanging-indent`, il faut
