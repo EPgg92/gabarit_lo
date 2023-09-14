@@ -429,7 +429,7 @@
 \let\subtitle=\soustitre
 
 
-\def\copyrightname#1{\def\@copyrightname{{\sc#1}}}
+\def\copyrightname#1{\def\@copyrightname{#1}} % on peut utiliser des petites capitales si on veut...
 \def\@copyrightname{{\tt\string\author}} %Rappel à l'utilisateur de définir \author
 
 \renewcommand{\author}[1]{%
@@ -466,11 +466,12 @@
 \def\@copyrightyear{}
 
 \def\copyrightline{%
-    \centerline{\footnotesize\copyright\ % il y a une espace à la fin: `\ `
-        \ifx\@copyrightname\empty{..........},
-    \else {\@copyrightname},
+    %% nous substutions les Creative Commons au traditionnel `\copyright`...
+    \centerline{\footnotesize\textsc{cc by-sa 4.0}\ % il y a une espace à la fin: `\ `
+        \ifx\@copyrightname\empty{..........},\ 
+    \else {\@copyrightname},\ 
     \fi%
-        \ \@copyrightyear%
+        \@copyrightyear%
     }%fin du centerline
 }
 
@@ -695,16 +696,16 @@
         % signature et donc nécessité une ligne vide).
 
                 %Obligatoire
-            \lignemembre\@president\titre{pr\'esident.e-rapporteur.euse}
+            \lignemembre\@president\titre{pr\'esident-rapporteur}
             \vfil
 
                 %Obligatoire
-            \lignemembre\@directeur\titre{directeur.trice de recherche}
+            \lignemembre\@directeur\titre{directeur de recherche}
             \vfil
 
                 %Optionnel
             \ifx\@codirecteur\empty\else
-                \lignemembre\@codirecteur\titre{codirecteur.trice}
+                \lignemembre\@codirecteur\titre{codirecteur·trice}
                 \vfil
             \fi
 
@@ -854,13 +855,13 @@
     \renewcommand{\baselinestretch}{1}   %simple interligne
     \normalsize\smaller
     \advance\temp by -\baselineskip\par\vskip\temp
-    \vspace{1em} % espace avant bloc
-    \leftskip3\parindent\rightskip2\parindent
+    \vspace{0.5em} % espace avant bloc
+    \leftskip2\parindent\rightskip2\parindent % indentation gauche / droite
     \noindent\ignorespaces}
   {\penalty10000\par
     \ifx\ArgI\Rel@x\else       %s'il est faux que #1=\relax
       \noindent\null\hfill$\sim$ \ArgI\par\fi
-      \vspace{1em} % espace après bloc
+      \vspace{0.5em} % espace après bloc
       \egroup}
 \newenvironment{quote*}[1][\relax]
   {\bgroup
@@ -869,7 +870,7 @@
     \renewcommand{\baselinestretch}{1}   %simple interligne
     \normalsize\smaller
     \advance\temp by -\baselineskip\par\vskip\temp
-    \leftskip3\parindent\rightskip2\parindent
+    \leftskip2\parindent\rightskip2\parindent % indentation gauche / droite
     \rm\noindent\ignorespaces\guillemetouvrant}
   {\penalty10000\guillemetfermant\par
     \ifx\ArgI\Rel@x\else       %s'il est faux que #1=\relax
@@ -1654,7 +1655,20 @@
      \endgroup%
 }
 
-\@addtoreset{footnote}{chapter}
+% commande spéciale pour légendes d'extraits de code
+\newcommand{\listingcaption}[2]{%
+    \vspace{0.5em}
+    \begin{spacing}{1.15}
+    \begin{small}
+    \noindent
+    \textbf{Extrait #1}
+    #2
+    \end{small}
+    \end{spacing}
+    \vspace{2em}
+}
+
+%\@addtoreset{footnote}{chapter} % numérotation des notes
 \setcounter{topnumber}{4}
 \setcounter{bottomnumber}{4}
 \setcounter{totalnumber}{4}
