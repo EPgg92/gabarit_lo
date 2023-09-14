@@ -114,7 +114,10 @@ Il est possible d’utiliser la commnade `epigraph` de LaTeX.
 
 ---
 
-## README original
+<details>
+<summary>
+README original
+</summary>
 
 ```
 Fichiers :
@@ -237,3 +240,4 @@ Document scindé :
   ni \end{document}.  Par conséquent, chapitre1.tex ne peut
   pas être compilé seul.
 ```
+</details>
