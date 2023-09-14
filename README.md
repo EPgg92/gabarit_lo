@@ -103,7 +103,7 @@ Quelques trucs pour la rédaction.
 
 ### Épigraphe
 
-Il est possible d’utiliser la commnade `epigraph` de LaTeX.
+Il est possible d’utiliser la commande `epigraph` de LaTeX.
 
 ```latex
 \begin{singlespace}
