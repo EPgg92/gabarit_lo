@@ -58,9 +58,9 @@ make memoire.pdf
 ```tex
 %% Si pandoc ne reconnaît pas la classe `.hanging-indent`, il faut
 %% renseigner le premier paramètre avec `1`.
-%% \begin{CSLReferences}{0}{0} %% problème! le paramètre est `0`
+%\begin{CSLReferences}{0}{0} %% problème! le premier paramètre est `0`
 
-\begin{CSLReferences}{1}{0}    %% correction manuelle
+\begin{CSLReferences}{1}{0}  %% correction manuelle
 ```
 
 Relancer la commande `make memoire.pdf` après la correction de ce fichier.
