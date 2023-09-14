@@ -11,7 +11,7 @@ Voir aussi : [Guide de présentation des mémoires et des thèses (PDF)](https:/
 **En résumé : rédiger en Markdown tout en utilisant le gabarit officiel pour produire un PDF impeccable.**
 
 Le modèle fourni par la faculté est un excellent point de départ, mais il suppose que le contenu sera inséré à même le fichier `.tex`.
-Le format `.tex` est excellent pour la composition (mise en page), beaucoup moins pour la rédaction.
+Le format TeX est excellent pour la composition (mise en page), beaucoup moins pour la rédaction.
 Grâce à [Pandoc](https://pandoc.org/) et en adaptant le fichier gabarit, le processus de rédaction est simple et demeure séparé de la mise en forme, laquelle est automatisée (plus fiable et moins chronophage pour l’utilisateur·trice).
 
 ## Prérequis
