@@ -127,7 +127,7 @@ $(TMP_DIR)/memoire.tex: $(CHAPITRES_DIR)/*.md tmpl/memoire.pandoc.tex $(BIBLIOGR
 	--top-level-division chapter \
 	--template=tmpl/memoire.pandoc.tex \
 	-f markdown+mark \
-	$(CHAPITRES_DIR)/chapitre-1.md $(CHAPITRES_DIR)/chapitre-2.md $(CHAPITRES_DIR)/chapitre-3.md  \
+	$(CHAPITRES_DIR)/*.md  \
 	-o $@
 
 references: $(TMP_DIR)/references.md.tex
@@ -140,9 +140,8 @@ $(TMP_DIR)/references.md.tex : $(PAGES_DIR)/references.md filtres/multibib.lua
 	
 	pandoc \
 	src/reglages.md \
-	--lua-filter=filtres/multibib.lua \
   	--citeproc \
-	--csl=$(CSL_FILE) \
+	$(CITEPROC_OPTIONS) \
     $(PAGES_DIR)/references.md \
     -f markdown \
     -t latex \
