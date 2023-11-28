@@ -127,12 +127,14 @@ $(TMP_DIR)/memoire.tex: $(CHAPITRES_DIR)/*.md tmpl/memoire.pandoc.tex $(BIBLIOGR
 	--top-level-division chapter \
 	--template=tmpl/memoire.pandoc.tex \
 	-f markdown+mark \
-	$(CHAPITRES_DIR)/chapitre-1.md $(CHAPITRES_DIR)/chapitre-2.md $(CHAPITRES_DIR)/chapitre-3.md  \
+	$(CHAPITRES_DIR)/*.md  \
 	-o $@
 
 references: $(TMP_DIR)/references.md.tex
 
-$(TMP_DIR)/references.md.tex : $(PAGES_DIR)/references.md filtres/multibib.lua
+#	--lua-filter=filtres/multibib.lua 
+
+$(TMP_DIR)/references.md.tex : $(PAGES_DIR)/references.md
 	@echo ""
 	@echo "======================================="
 	@echo "📚 En train de faire les references ..."
@@ -140,15 +142,34 @@ $(TMP_DIR)/references.md.tex : $(PAGES_DIR)/references.md filtres/multibib.lua
 	
 	pandoc \
 	src/reglages.md \
-	--lua-filter=filtres/multibib.lua \
   	--citeproc \
-	--csl=$(CSL_FILE) \
+	$(CITEPROC_OPTIONS) \
     $(PAGES_DIR)/references.md \
     -f markdown \
     -t latex \
   	-o $(TMP_DIR)/references.md.tex
 	
 	@echo "  Fait!"
+
+# references générées en html
+
+references_tmp: $(TMP_DIR)/referencestmp.html
+
+$(TMP_DIR)/referencestmp.html : $(PAGES_DIR)/referencestmp.md
+	@echo ""
+	@echo "======================================="
+	@echo "📚 refs temporaires ..."
+	@echo "======================================="
+	
+	pandoc \
+	src/reglages.md \
+  	--citeproc \
+	$(CITEPROC_OPTIONS) \
+    $(PAGES_DIR)/referencestmp.md \
+	-o $@
+	
+	@echo "  Fait!"
+
 
 memoire.pdf: pages chapitres
 	@echo ""

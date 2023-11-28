@@ -27,6 +27,16 @@
 %%  certain·e que l'installation est bonne.)
 \usepackage{lmodern}
 
+%%test pour grec dans verbatim
+\usepackage{alphabeta}
+
+\makeatletter
+\renewcommand\verbatim@font{\normalfont\fontencoding{T1}\ttfamily}
+\makeatother
+
+%\defaultfontfeatures{Ligatures=TeX}
+%\usepackage{OldStandard}
+
 %% Il n'est pas nécessaire d'utiliser <babel>, car
 %% les commandes intégrées par la classe <littfra>
 %% \francais et \anglais font le travail. Néanmoins,
@@ -34,10 +44,10 @@
 %% <natbib>), donc simplement enlever les % devant <babel>
 %% dans ce cas. Attention! Certains packages sont sensibles
 %% à l'ordre dans lequel ils sont chargés.
-\francais % or
+%\francais % or
 %%\anglais
 %%
-%\usepackage[english,french]{babel}
+\usepackage[french,greek]{babel}
 
 % Aidons LaTeX à interpréter certains caractères unicode (surtout dans biblio/CSL)
 \DeclareUnicodeCharacter{1D49}{\textsuperscript{e}} % «e» en exposant
@@ -284,6 +294,20 @@ $if(bibliography)$
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 $endif$
 
+%% ajout pour test pour grec
+
+$if(mathfont)$
+$if(mathspec)$
+  \ifxetex
+    \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+  \else
+    \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+  \fi
+$else$
+  \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+$endif$
+$endif$
+
 %% Il est obligatoire d'écrire à double interligne
 %% ou à interligne et demi. On peut soit utiliser
 %% le package <setspace> ou \baselinestretch.
@@ -306,7 +330,7 @@ $endif$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-
+\francais
 %%
 %% Voici des options pour annoter les différentes versions de votre
 %% mémoire. La commande \brouillon imprime, au bas de chacune des pages, la
@@ -569,7 +593,7 @@ $endif$
 
 \IfFileExists{./tmp/introduction.md.tex}{%
   \setcounter{secnumdepth}{-1}
-  \chapter*{Introduction}
+  \chapter*{Commencement}
 
   \input{./tmp/introduction.md.tex}
   \setcounter{secnumdepth}{4}
@@ -592,7 +616,7 @@ $body$
   %% si la numérotation des notes de pas de page se fait par chapitre,
   %% on doit remet le compteur à zéro pour cette section (qui n'est pas numérotée)
   %\setcounter{footnote}{0}
-  \chapter*{Conclusion}
+  \chapter*{Dénouement}
 
   \input{./tmp/conclusion.md.tex}
   % On peut vouloir la numérotation à partir d’ici, ou non. Décommenter pour en avoir.
@@ -703,7 +727,7 @@ $body$
 La licence de libre diffusion autorise tous les usages \\
 non commerciaux, avec un partage dans les mêmes conditions.
 
-Ce mémoire est composé en Latin Modern, en recourant notamment à \\
+Cette thèse est composée en Latin Modern, en recourant notamment à \\
 pandoc de John McFarlane et au \LaTeX{} de Donald Knuth.
 
 
