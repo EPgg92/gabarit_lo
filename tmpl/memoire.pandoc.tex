@@ -4,9 +4,9 @@
 %% La classe <littfra> est construite au-dessus de <amsbook>, donc
 %% <amsmath>, <amsfonts> et <amsthm> sont automatiquement chargés.
 %% Pour un mémoire
-\documentclass[11pt,twoside,maitrise]{littfra}
+%%\documentclass[11pt,twoside,maitrise]{littfra}
 %% Pour une thèse
-%%\documentclass[12pt,twoside,phd]{littfra}
+\documentclass[12pt,twoside,phd]{littfra}
 
 \usepackage[utf8]{inputenc} %Obligatoires
 \usepackage[T1]{fontenc}    %
@@ -49,6 +49,9 @@
 %%
 \usepackage[french,greek]{babel}
 
+%%réglages pour hyperliens en couleurs
+
+
 % Aidons LaTeX à interpréter certains caractères unicode (surtout dans biblio/CSL)
 \DeclareUnicodeCharacter{1D49}{\textsuperscript{e}} % «e» en exposant
 \DeclareUnicodeCharacter{1D52}{\textsuperscript{o}} % «o» en exposant
@@ -76,6 +79,34 @@
   \vfuzz\hfuzz}
 \sloppy   %appel de \sloppy pour le document
 %%\fussy  %ou \fussy
+
+%%test pour bibliographie, ref inline
+
+
+$if(natbib)$
+\usepackage{natbib}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
+$endif$
+$if(biblatex)$
+\usepackage[$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
+$endif$
+$if(listings)$
+\usepackage{listings}
+$endif$
+$if(lhs)$
+\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+$endif$
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+$if(tables)$
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
+$endif$
 
 %% Packages utiles.
 \usepackage{graphicx,amssymb,subfigure,icomma}
@@ -176,7 +207,16 @@ $endif$
 %% devraient être les dernier package a être chargé,
 %% donc chargez vos packages avant.
 \usepackage{hyperref}  % Ajoute les hyperlien
-\hypersetup{colorlinks=true,allcolors=black}
+\hypersetup{
+	pdfauthor   = {Moi},
+	pdftitle    = {C V},
+	colorlinks=true, 
+	breaklinks=true, 
+	urlcolor= blue, 
+	linkcolor= black,
+	pdfcreator  = {\LaTeX},
+	pdfproducer = {Kile}
+}
 \usepackage{hypcap}   % Corrige la position du lien pour les images
 \usepackage{bookmark} % Remédie à des petits problème
                       % de <hyperref> (important qu'il
@@ -316,7 +356,7 @@ $endif$
 \usepackage[doublespacing]{setspace}
 \usepackage{biblatex}
  % ou
-\renewcommand{\baselinestretch}{2}
+\renewcommand{\baselinestretch}{1.5}
 % edit (Louis): la commande usepackage avec l’option
 % doublespacing ci-haut ne suffit pas, l’interligne
 % demeure à 1.5... donc il faut *aussi* utiliser
@@ -403,6 +443,10 @@ $if(directeur)$
 \directeur{$directeur$}
 $endif$
 
+$if(directrice)$
+\directeur{$directrice$}
+$endif$
+
 %%\codirecteur{Nom du 1er codirecteur}         % s'il y a lieu
 %%\codirecteurs{Nom du 2e codirecteur}         % s'il y a lieu
 
@@ -424,13 +468,13 @@ $if(plusmembresjury)$
 \plusmembresjury{$plusmembresjury$}
 $endif$
 
-$if(repdoyen)$
+%%$if(repdoyen)$
  % Cette option existe encore, mais elle n'a plus sa place
  % dans la page titre. L'utiliser seulement si le directeur
  % insiste...
  %(thèse seulement)
-\repdoyen{$repdoyen$}
-$endif$
+%%\repdoyen{$repdoyen$}
+%%$endif$
 
 %%
 %% Fin des variables à définir. La commande \maketitle créera votre
@@ -653,49 +697,50 @@ $body$
                                     % Seules celles référencées dans le texte seront ajoutées
                                     % \`a la bibliographie.
 
-\IfFileExists{./tmp/references.md.tex}{%
-  \setcounter{secnumdepth}{-1}
-  \chapter*{R\'ef\'erences bibliographiques}
 
-  \begin{spacing}{1.35}
-  \input{./tmp/references.md.tex}
-  \end{spacing}
+%\IfFileExists{./tmp/references.md.tex}{%
+%  \setcounter{secnumdepth}{-1}
+%  \chapter*{R\'ef\'erences bibliographiques}
+
+%  \begin{spacing}{1.35}
+%  \input{./tmp/references.md.tex}
+%  \end{spacing}
 % On peut vouloir la numérotation à partir d’ici, ou non. Décommenter pour en avoir.
 %\setcounter{secnumdepth}{-1}
-}{} % end file exists
+%}{} % end file exists
 
 % Bibliographie, pour usage avec pandoc
-%$if(natbib)$
-%$if(bibliography)$
-%$if(biblio-title)$
-%$if(has-chapters)$
-%\renewcommand\bibname{$biblio-title$}
-%$else$
-%\renewcommand\refname{$biblio-title$}
-%$endif$
-%$endif$
-%$if(beamer)$
-%\begin{frame}[allowframebreaks]{$biblio-title$}
-%  \bibliographytrue
-%  $endif$
-%  \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
-%  $if(beamer)$
-%\end{frame}
-%$endif$
+$if(natbib)$
+$if(bibliography)$
+$if(biblio-title)$
+$if(has-chapters)$
+\renewcommand\bibname{$biblio-title$}
+$else$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
+$if(beamer)$
+\begin{frame}[allowframebreaks]{$biblio-title$}
+  \bibliographytrue
+  $endif$
+  \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+  $if(beamer)$
+\end{frame}
+$endif$
 %
-%$endif$
-%$endif$
-%$if(biblatex)$
-%$if(beamer)$
-%\begin{frame}[allowframebreaks]{$biblio-title$}
-%  \bibliographytrue
-%  \printbibliography[heading=none]
-%\end{frame}
-%$else$
-%\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-%$endif$
+$endif$
+$endif$
+$if(biblatex)$
+$if(beamer)$
+\begin{frame}[allowframebreaks]{$biblio-title$}
+  \bibliographytrue
+  \printbibliography[heading=none]
+\end{frame}
+$else$
+\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+$endif$
 %
-%$endif$
+$endif$
 
 %%------------------------------------------------- %
 %%                  Annexe A                        %
