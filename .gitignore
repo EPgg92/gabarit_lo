@@ -1,10 +1,7 @@
 .DS_Store
 /tmp/
-!/tmp/.gitkeep
+!.gitkeep
 /export/
-!/tmp/.gitkeep
-
-
 src
 content
 images
