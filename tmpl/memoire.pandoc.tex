@@ -146,6 +146,7 @@ $highlighting-macros$
 $endif$
 % end imported chunk
 
+\usepackage{array}
 % tables
 $if(tables)$
 \usepackage{longtable,booktabs,array}
@@ -663,6 +664,9 @@ $body$
 % On peut vouloir la numérotation à partir d’ici, ou non. Décommenter pour en avoir.
 %\setcounter{secnumdepth}{-1}
 }{} % end file exists
+
+
+\listoffigures
 
 % Bibliographie, pour usage avec pandoc
 %$if(natbib)$
