@@ -4,9 +4,9 @@
 %% La classe <littfra> est construite au-dessus de <amsbook>, donc
 %% <amsmath>, <amsfonts> et <amsthm> sont automatiquement chargés.
 %% Pour un mémoire
-%%\documentclass[11pt,twoside,maitrise]{littfra}
+\documentclass[11pt,twoside,maitrise]{littfra}
 %% Pour une thèse
-\documentclass[12pt,twoside,phd]{littfra}
+%%\documentclass[12pt,twoside,phd]{littfra}
 
 \usepackage[utf8]{inputenc} %Obligatoires
 \usepackage[T1]{fontenc}    %
@@ -27,16 +27,6 @@
 %%  certain·e que l'installation est bonne.)
 \usepackage{lmodern}
 
-%%test pour grec dans verbatim
-\usepackage{alphabeta}
-
-\makeatletter
-\renewcommand\verbatim@font{\normalfont\fontencoding{T1}\ttfamily}
-\makeatother
-
-%\defaultfontfeatures{Ligatures=TeX}
-%\usepackage{OldStandard}
-
 %% Il n'est pas nécessaire d'utiliser <babel>, car
 %% les commandes intégrées par la classe <littfra>
 %% \francais et \anglais font le travail. Néanmoins,
@@ -44,13 +34,10 @@
 %% <natbib>), donc simplement enlever les % devant <babel>
 %% dans ce cas. Attention! Certains packages sont sensibles
 %% à l'ordre dans lequel ils sont chargés.
-%\francais % or
+\francais % or
 %%\anglais
 %%
-\usepackage[french,greek]{babel}
-
-%%réglages pour hyperliens en couleurs
-
+%\usepackage[english,french]{babel}
 
 % Aidons LaTeX à interpréter certains caractères unicode (surtout dans biblio/CSL)
 \DeclareUnicodeCharacter{1D49}{\textsuperscript{e}} % «e» en exposant
@@ -123,7 +110,7 @@ $endif$
 \usepackage{xcolor}
 % combiné avec xcolor, on peut utiliser la commande `hl{texte en subrillance}`
 % voir https://tex.stackexchange.com/questions/114866/highlight-color-parts-of-text
-\usepackage{soulutf8}
+\usepackage{soul}
 
 $if(geometry)$
 $if(beamer)$
@@ -149,7 +136,7 @@ $highlighting-macros$
 $endif$
 % end imported chunk
 
-\usepackage{array}
+
 % tables
 $if(tables)$
 \usepackage{longtable,booktabs,array}
@@ -180,16 +167,7 @@ $endif$
 %% devraient être les dernier package a être chargé,
 %% donc chargez vos packages avant.
 \usepackage{hyperref}  % Ajoute les hyperlien
-\hypersetup{
-	pdfauthor   = {Moi},
-	pdftitle    = {C V},
-	colorlinks=true, 
-	breaklinks=true, 
-	urlcolor= blue, 
-	linkcolor= black,
-	pdfcreator  = {\LaTeX},
-	pdfproducer = {Kile}
-}
+\hypersetup{colorlinks=true,allcolors=black}
 \usepackage{hypcap}   % Corrige la position du lien pour les images
 \usepackage{bookmark} % Remédie à des petits problème
                       % de <hyperref> (important qu'il
@@ -263,10 +241,9 @@ $endif$
 %% Numérotation des équations par section
 %% et des  tableaux et figures par chapitre.
 %% Ceci peut être modifié selon les préférences de l'utilisateur.
-% \numberwithin{equation}{section}
-% \numberwithin{table}{chapter}
-% \numberwithin{figure}{chapter}
-\counterwithin{figure}{chapter}
+\numberwithin{equation}{section}
+\numberwithin{table}{chapter}
+\numberwithin{figure}{chapter}
 
 %%
 %% Si on veut faire un index, il faut décommenter la ligne
@@ -308,20 +285,6 @@ $if(bibliography)$
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 $endif$
 
-%% ajout pour test pour grec
-
-$if(mathfont)$
-$if(mathspec)$
-  \ifxetex
-    \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
-  \else
-    \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
-  \fi
-$else$
-  \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
-$endif$
-$endif$
-
 %% Il est obligatoire d'écrire à double interligne
 %% ou à interligne et demi. On peut soit utiliser
 %% le package <setspace> ou \baselinestretch.
@@ -330,7 +293,7 @@ $endif$
 \usepackage[doublespacing]{setspace}
 \usepackage{biblatex}
  % ou
-\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\baselinestretch}{2}
 % edit (Louis): la commande usepackage avec l’option
 % doublespacing ci-haut ne suffit pas, l’interligne
 % demeure à 1.5... donc il faut *aussi* utiliser
@@ -344,7 +307,7 @@ $endif$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\francais
+
 %%
 %% Voici des options pour annoter les différentes versions de votre
 %% mémoire. La commande \brouillon imprime, au bas de chacune des pages, la
@@ -417,10 +380,6 @@ $if(directeur)$
 \directeur{$directeur$}
 $endif$
 
-$if(directrice)$
-\directeur{$directrice$}
-$endif$
-
 %%\codirecteur{Nom du 1er codirecteur}         % s'il y a lieu
 %%\codirecteurs{Nom du 2e codirecteur}         % s'il y a lieu
 
@@ -442,13 +401,13 @@ $if(plusmembresjury)$
 \plusmembresjury{$plusmembresjury$}
 $endif$
 
-%%$if(repdoyen)$
+$if(repdoyen)$
  % Cette option existe encore, mais elle n'a plus sa place
  % dans la page titre. L'utiliser seulement si le directeur
  % insiste...
  %(thèse seulement)
-%%\repdoyen{$repdoyen$}
-%%$endif$
+\repdoyen{$repdoyen$}
+$endif$
 
 %%
 %% Fin des variables à définir. La commande \maketitle créera votre
@@ -611,7 +570,7 @@ $endif$
 
 \IfFileExists{./tmp/introduction.md.tex}{%
   \setcounter{secnumdepth}{-1}
-  \chapter*{Commencement}
+  \chapter*{Introduction}
 
   \input{./tmp/introduction.md.tex}
   \setcounter{secnumdepth}{4}
@@ -634,7 +593,7 @@ $body$
   %% si la numérotation des notes de pas de page se fait par chapitre,
   %% on doit remet le compteur à zéro pour cette section (qui n'est pas numérotée)
   %\setcounter{footnote}{0}
-  \chapter*{Dénouement}
+  \chapter*{Conclusion}
 
   \input{./tmp/conclusion.md.tex}
   % On peut vouloir la numérotation à partir d’ici, ou non. Décommenter pour en avoir.
@@ -719,7 +678,14 @@ $body$
 %%                  Annexe A                        %
 %%------------------------------------------------- %
 
-\listoffigures
+\appendix
+
+\IfFileExists{./tmp/annexes.md.tex}{%
+  \begin{spacing}{1.5}
+  \input{./tmp/annexes.md.tex}
+  \end{spacing}
+}{} % end file exists
+
 
 %%------------------------------------------------- %
 %%                  Colophon                        %
@@ -738,7 +704,7 @@ $body$
 La licence de libre diffusion autorise tous les usages \\
 non commerciaux, avec un partage dans les mêmes conditions.
 
-Cette thèse est composée en Latin Modern, en recourant notamment à \\
+Ce mémoire est composé en Latin Modern, en recourant notamment à \\
 pandoc de John McFarlane et au \LaTeX{} de Donald Knuth.
 
 
