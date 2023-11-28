@@ -83,30 +83,30 @@
 %%test pour bibliographie, ref inline
 
 
-$if(natbib)$
-\usepackage{natbib}
-\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
-$endif$
-$if(biblatex)$
-\usepackage[$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
-$for(bibliography)$
-\addbibresource{$bibliography$}
-$endfor$
-$endif$
-$if(listings)$
-\usepackage{listings}
-$endif$
-$if(lhs)$
-\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
-$endif$
-$if(highlighting-macros)$
-$highlighting-macros$
-$endif$
-$if(tables)$
-\usepackage{longtable,booktabs}
-% Fix footnotes in tables (requires footnote package)
-\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
-$endif$
+% $if(natbib)$
+% \usepackage{natbib}
+% \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
+% $endif$
+% $if(biblatex)$
+% \usepackage[$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
+% $for(bibliography)$
+% \addbibresource{$bibliography$}
+% $endfor$
+% $endif$
+% $if(listings)$
+% \usepackage{listings}
+% $endif$
+% $if(lhs)$
+% \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+% $endif$
+% $if(highlighting-macros)$
+% $highlighting-macros$
+% $endif$
+% $if(tables)$
+% \usepackage{longtable,booktabs}
+% % Fix footnotes in tables (requires footnote package)
+% \IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
+% $endif$
 
 %% Packages utiles.
 \usepackage{graphicx,amssymb,subfigure,icomma}
@@ -700,52 +700,51 @@ $body$
                                     % \`a la bibliographie.
 
 
-%\IfFileExists{./tmp/references.md.tex}{%
-%  \setcounter{secnumdepth}{-1}
-%  \chapter*{R\'ef\'erences bibliographiques}
-
-%  \begin{spacing}{1.35}
-%  \input{./tmp/references.md.tex}
-%  \end{spacing}
+\IfFileExists{./tmp/references.md.tex}{%
+  \setcounter{secnumdepth}{-1}
+  \chapter*{R\'ef\'erences bibliographiques}
+  \begin{spacing}{1.35}
+  \input{./tmp/references.md.tex}
+  \end{spacing}
 % On peut vouloir la numérotation à partir d’ici, ou non. Décommenter pour en avoir.
 %\setcounter{secnumdepth}{-1}
-%}{} % end file exists
+}{} % end file exists
 
 
 \listoffigures
 
 % Bibliographie, pour usage avec pandoc
-$if(natbib)$
-$if(bibliography)$
-$if(biblio-title)$
-$if(has-chapters)$
-\renewcommand\bibname{$biblio-title$}
-$else$
-\renewcommand\refname{$biblio-title$}
-$endif$
-$endif$
-$if(beamer)$
-\begin{frame}[allowframebreaks]{$biblio-title$}
-  \bibliographytrue
-  $endif$
-  \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
-  $if(beamer)$
-\end{frame}
-$endif$
-%
-$endif$
-$endif$
-$if(biblatex)$
-$if(beamer)$
-\begin{frame}[allowframebreaks]{$biblio-title$}
-  \bibliographytrue
-  \printbibliography[heading=none]
-\end{frame}
-$else$
-\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-$endif$
-%
-$endif$
+% $if(natbib)$
+% $if(bibliography)$
+% $if(biblio-title)$
+% $if(has-chapters)$
+% \renewcommand\bibname{$biblio-title$}
+% $else$
+% \renewcommand\refname{$biblio-title$}
+% $endif$
+% $endif$
+% $if(beamer)$
+% \begin{frame}[allowframebreaks]{$biblio-title$}
+%   \bibliographytrue
+%   $endif$
+%   \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+%   $if(beamer)$
+% \end{frame}
+% $endif$
+% %
+% $endif$
+% $endif$
+% $if(biblatex)$
+% $if(beamer)$
+% \begin{frame}[allowframebreaks]{$biblio-title$}
+%   \bibliographytrue
+%   \printbibliography[heading=none]
+% \end{frame}
+% $else$
+% \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+% $endif$
+% %
+% $endif$
 
 %%------------------------------------------------- %
 %%                  Annexe A                        %
