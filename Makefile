@@ -18,7 +18,7 @@ clean:
 	@echo "================="
 	@echo "  ...Nettoyage..."
 	@echo "================="
-	@rm $(TMP_DIR)/*
+	@rm -v $(TMP_DIR)/* $(CHAPITRES_DIR)/* $(PAGES_DIR)/* 2>/dev/null || true 
 
 	@echo "  Fichiers dans $(TMP_DIR)/ nettoyés."
 
