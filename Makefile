@@ -11,7 +11,7 @@ DATE=$(date +'%Y-%m-%d-%Hh%M')
 DOSSIER_FINAL := $(shell date +'%Y-%m-%d-%kh%M')
 CITEPROC_OPTIONS=--bibliography=$(BIBLIOGRAPHY_FILE) --csl=$(CSL_FILE)
 
-pages: resume abstract introduction remerciements conclusion references
+pages: resume abstract introduction remerciements conclusion # references
 
 clean:
 	@echo ""
