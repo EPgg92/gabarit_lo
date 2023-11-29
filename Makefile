@@ -171,7 +171,11 @@ $(TMP_DIR)/referencestmp.html : $(PAGES_DIR)/referencestmp.md
 	@echo "  Fait!"
 
 
-memoire.pdf: pages chapitres
+replace_verbatim: tmp/*.tex
+	../python/replace_verbatim_tex.py tmp/*.tex
+
+
+memoire.pdf: replace_verbatim pages chapitres
 	@echo ""
 	@echo "================================================"
 	@echo "📕 En train de produire le pdf avec pdflatex ..."
