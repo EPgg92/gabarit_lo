@@ -495,6 +495,9 @@
 \def\directeur#1{\def\@directeur{{\normalfont\sl#1}}}
 \def\@directeur{}
 
+\def\directrice#1{\def\@directrice{{\normalfont\sl#1}}}
+\def\@directrice{}
+
 \def\codirecteur#1{\def\@codirecteur{{\normalfont\sl#1}}}
 \def\@codirecteur{}
 
@@ -703,6 +706,10 @@
             \lignemembre\@directeur\titre{directeur de recherche}
             \vfil
 
+            %Obligatoire
+            \lignemembre\@directrice\titre{directrice de recherche}
+            \vfil
+
                 %Optionnel
             \ifx\@codirecteur\empty\else
                 \lignemembre\@codirecteur\titre{codirecteur·trice}
@@ -742,7 +749,7 @@
                 %garante du doyen qui assiste à la soutenance. (Il ne fait
                 %pas parti du jury.)
             \ifphd@
-                \lignemembre\@repdoyen\titre{repr\'esentant du doyen de la FESP}
+                \lignemembre\@repdoyen\titre{repr\'esentant du doyen de la FAS}
                 \vfil
             \fi
 

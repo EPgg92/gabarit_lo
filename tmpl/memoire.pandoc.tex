@@ -185,7 +185,7 @@ $endif$
 	pdftitle    = {C V},
 	colorlinks=true, 
 	breaklinks=true, 
-	urlcolor= blue, 
+	urlcolor= teal, 
 	linkcolor= black,
 	pdfcreator  = {\LaTeX},
 	pdfproducer = {Kile}
@@ -418,7 +418,7 @@ $if(directeur)$
 $endif$
 
 $if(directrice)$
-\directeur{$directrice$}
+\directrice{$directrice$}
 $endif$
 
 %%\codirecteur{Nom du 1er codirecteur}         % s'il y a lieu
@@ -472,6 +472,10 @@ $endif$
  % Pour générer la deuxième page titre, il faut appeler à nouveau \maketitle
  % Cette page est obligatoire.
 \maketitle
+
+\begin{center}
+  Thèse disponible à l'adresse \href{https://paume.page/}{Paume.page} (\href{https://paume.page/}{https://paume.page/})
+  \end{center}
 
 \IfFileExists{./tmp/resume.md.tex}{%
   %%------------------------------------------------- %
