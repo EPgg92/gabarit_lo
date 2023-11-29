@@ -495,6 +495,9 @@
 \def\directeur#1{\def\@directeur{{\normalfont\sl#1}}}
 \def\@directeur{}
 
+\def\directrice#1{\def\@directrice{{\normalfont\sl#1}}}
+\def\@directrice{}
+
 \def\codirecteur#1{\def\@codirecteur{{\normalfont\sl#1}}}
 \def\@codirecteur{}
 
@@ -513,8 +516,8 @@
 \def\examinateur#1{\def\@examinateur{{\normalfont\sl#1}}}
 \def\@examinateur{}
 
-\def\repdoyen#1{\def\@repdoyen{{\normalfont\sl#1}}}
-\def\@repdoyen{}
+%\def\repdoyen#1{\def\@repdoyen{{\normalfont\sl#1}}}
+%\def\@repdoyen{}
 
 \def\dateacceptation#1{\def\@dateacceptation{{\normalfont\sl#1}}}
 \def\@dateacceptation{}
@@ -703,6 +706,10 @@
             \lignemembre\@directeur\titre{directeur de recherche}
             \vfil
 
+            %Obligatoire
+            \lignemembre\@directrice\titre{directrice de recherche}
+            \vfil
+
                 %Optionnel
             \ifx\@codirecteur\empty\else
                 \lignemembre\@codirecteur\titre{codirecteur·trice}
@@ -734,17 +741,17 @@
 
                 %Nécessaire seulement pour les thèses
             \ifphd@
-                \lignemembre\@examinateur\titre{examinateur.trice externe}
+                \lignemembre\@examinateur\titre{examinatrice externe}
                 \vfil
             \fi
 
                 %Nécessaire seulement pour les thèses. C'est la personne
                 %garante du doyen qui assiste à la soutenance. (Il ne fait
                 %pas parti du jury.)
-            \ifphd@
-                \lignemembre\@repdoyen\titre{repr\'esentant du doyen de la FESP}
-                \vfil
-            \fi
+           % \ifphd@
+               % \lignemembre\@repdoyen\titre{repr\'esentant du doyen de la FAS}
+                %\vfil
+            %\fi
 
  %%            \ifmaitrise@\centerline{M\'emoire accept\'e le~:}\fi
  %%            \ifrapport@\centerline{Rapport de stage accept\'e le~:}\fi
