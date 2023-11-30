@@ -172,8 +172,9 @@ $(TMP_DIR)/referencestmp.html : $(PAGES_DIR)/referencestmp.md
 
 
 replace_verbatim:
+	# à commenter lorsque bidouille tex finale
 	../python/replace_verbatim_tex.py tmp/*.tex
-
+	echo lol 
 
 memoire.pdf: replace_verbatim pages chapitres
 	@echo ""
