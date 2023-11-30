@@ -130,26 +130,26 @@ $(TMP_DIR)/memoire.tex: $(CHAPITRES_DIR)/*.md tmpl/memoire.pandoc.tex $(BIBLIOGR
 	$(CHAPITRES_DIR)/*.md  \
 	-o $@
 
-references: $(TMP_DIR)/references.md.tex
+# references: $(TMP_DIR)/references.md.tex
 
-#	--lua-filter=filtres/multibib.lua 
+# #	--lua-filter=filtres/multibib.lua 
 
-$(TMP_DIR)/references.md.tex : $(PAGES_DIR)/references.md
-	@echo ""
-	@echo "======================================="
-	@echo "📚 En train de faire les references ..."
-	@echo "======================================="
+# $(TMP_DIR)/references.md.tex : $(PAGES_DIR)/references.md
+# 	@echo ""
+# 	@echo "======================================="
+# 	@echo "📚 En train de faire les references ..."
+# 	@echo "======================================="
 	
-	pandoc \
-	src/reglages.md \
-  	--citeproc \
-	$(CITEPROC_OPTIONS) \
-    $(PAGES_DIR)/references.md \
-    -f markdown \
-    -t latex \
-  	-o $(TMP_DIR)/references.md.tex
+# 	pandoc \
+# 	src/reglages.md \
+#   	--citeproc \
+# 	$(CITEPROC_OPTIONS) \
+#     $(PAGES_DIR)/references.md \
+#     -f markdown \
+#     -t latex \
+#   	-o $(TMP_DIR)/references.md.tex
 	
-	@echo "  Fait!"
+# 	@echo "  Fait!"
 
 # references générées en html
 
