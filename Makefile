@@ -171,7 +171,7 @@ $(TMP_DIR)/referencestmp.html : $(PAGES_DIR)/referencestmp.md
 	@echo "  Fait!"
 
 
-replace_verbatim: tmp/*.tex
+replace_verbatim:
 	../python/replace_verbatim_tex.py tmp/*.tex
 
 
